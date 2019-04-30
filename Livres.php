@@ -115,6 +115,7 @@
   </div>
 </div>
 
+
        <script src="jquery.js"></script>
     <script>
       $(function() {
@@ -127,13 +128,7 @@
 
         var div = $(idbutton);
         $.data(div, 'MonProduit', {prix:12, nom:"bonjour", auteur:auteur, style:style, vendeur:vendeur});
-        var val1 = $.data(div, 'MonProduit').prix;
-        var val2 = $.data(div, 'MonProduit').nom;
-        var val3 = $.data(div, 'MonProduit').auteur;
-        $(idbutton).text(val1);
-        $('#sp2').text(val2);
-        $('#sp3').text(val3);
-
+        
         }); 
     </script>
   
