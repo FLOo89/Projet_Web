@@ -4,7 +4,9 @@
     position: relative; 
 }
 
-
+.body{
+    padding-top: 100px;
+}
 .card{
     margin-bottom: 20px; 
     
