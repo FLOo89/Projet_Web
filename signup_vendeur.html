@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+       page inscription
+    </title>
+</head>
+<body>
+  <form action='signup_vendeur.php' method='POST'>
+    <label>Pseudo :</label>
+    <input type="text" name="pseudo" placeholder="Nom d'utilisateur " /><br />
+    <label>Email :</label>
+    <input type="text" name="email" placeholder="Email " /><br />
+    <label>Nom :</label>
+    <input type="text" name="nom" placeholder="Nom " /><br />
+    <label>Photo identité :</label>
+    <input type="text" name="photo" placeholder="URL photo " /><br />
+    <label>Image fond :</label>
+    <input type="text" name="email" placeholder="URL image fond " /><br />
+    <label>Type d'utilisateur :</label>
+    <select name="type_user">
+      <option value="1" selected>Vendeur</option>
+      <option value="0">Vendeur Administrateur</option>
+    </select><br />
+    <input type="submit" value="S'inscrire" >
+  </form>
+</body>
+
+</html>
