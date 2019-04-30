@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 30 avr. 2019 à 10:02
+-- Généré le :  mar. 30 avr. 2019 à 14:46
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -74,18 +74,14 @@ CREATE TABLE IF NOT EXISTS `livre` (
   `style` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idvendeur` (`idvendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=1006 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `livre`
 --
 
 INSERT INTO `livre` (`id`, `idvendeur`, `photo`, `prix`, `nom`, `date`, `auteur`, `style`) VALUES
-(1001, 2, 'https://static.fnac-static.com/multimedia/FR/Images_Produits/FR/fnac.com/Visual_Principal_340/4/1/8/9782013232814/tsp20120918181211/Les-Miserables.jpg', 6, 'Les miserables', '2019-04-03', 'Victor Hugo', 'Roman'),
-(1002, 2, 'https://images-na.ssl-images-amazon.com/images/I/51V6YDH84BL.jpg', 10, 'Germinal', '2019-04-02', 'Victor Hugo', 'Naturalisme'),
-(1003, 2, 'https://media.cultura.com/media/catalog/product/cache/1/image/1000x1000/9df78eab33525d08d6e5fb8d27136e95/j/0/j00837.jpg?t=1514302453', 13.5, 'Harry Potter et l\'enfant maudit', '2019-04-02', 'J.K Rowlling', 'fantastique'),
-(1004, 2, 'https://images-na.ssl-images-amazon.com/images/I/517MH9KJ38L._SX327_BO1,204,203,200_.jpg', 13, 'Harry Potter à l\'ecole des sorciers\r\n', '2018-11-12', 'J.K Rowling', 'fantastique'),
-(1005, 2, 'https://images-na.ssl-images-amazon.com/images/I/91OSvPibmJL.jpg', 14, 'Harry Potter et la chambre des secrets', '2019-04-15', 'J.K Rowling', 'fantastique');
+(1001, 2, 'https://static.fnac-static.com/multimedia/FR/Images_Produits/FR/fnac.com/Visual_Principal_340/4/1/8/9782013232814/tsp20120918181211/Les-Miserables.jpg', 6, 'Les miserables', '2019-04-03', 'Victor Hugo', 'Roman');
 
 -- --------------------------------------------------------
 
@@ -104,14 +100,19 @@ CREATE TABLE IF NOT EXISTS `musique` (
   `photo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idvendeur` (`idvendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `musique`
 --
 
 INSERT INTO `musique` (`id`, `idvendeur`, `nom`, `prix`, `date`, `artiste`, `photo`) VALUES
-(1, 2, 'San', 2, '2019-03-14', 'Orelsan', 'https://i.ytimg.com/vi/PejyoeG_TmA/maxresdefault.jpg');
+(1, 2, 'San', 2, '2019-03-14', 'Orelsan', 'https://i.ytimg.com/vi/PejyoeG_TmA/maxresdefault.jpg'),
+(2, 2, 'Bella ', 1, '2019-04-11', 'Maitre gims', 'https://i.ytimg.com/vi/rMltoD1jCGI/maxresdefault.jpg'),
+(3, 2, 'La bohème ', 4, '2019-02-13', 'Charles Aznavour ', 'http://www.chartsinfrance.net/style/breves/6/photo_1538488432.jpg'),
+(7, 2, 'Ac Milan', 2, '2019-04-01', 'Booba', 'https://images.genius.com/8105ce9b527f125adf707faecd0797be.1000x1000x1.jpg'),
+(8, 2, 'Au DD', 4.99, '2019-04-17', 'PNL', 'https://m.media-amazon.com/images/I/61iuG4fhYRL._SS500_.jpg'),
+(9, 2, 'La loi de murphy', 2.59, '2019-04-12', 'Angele', 'https://i.ytimg.com/vi/zGyThu7EAHQ/maxresdefault.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,19 +124,27 @@ DROP TABLE IF EXISTS `sportloisir`;
 CREATE TABLE IF NOT EXISTS `sportloisir` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `idvendeur` int(10) NOT NULL,
+  `date` date DEFAULT NULL,
+  `marque` varchar(255) NOT NULL,
   `nom` varchar(255) NOT NULL,
+  `taille` varchar(255) NOT NULL,
   `prix` float NOT NULL,
   `photo` varchar(500) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idvendeur` (`idvendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `sportloisir`
 --
 
-INSERT INTO `sportloisir` (`id`, `idvendeur`, `nom`, `prix`, `photo`) VALUES
-(1, 2, 'Ballon', 9, 'https://media.intersport.fr/is/image/intersportfr/5003248E1Q_FA?$produit_l$');
+INSERT INTO `sportloisir` (`id`, `idvendeur`, `date`, `marque`, `nom`, `taille`, `prix`, `photo`) VALUES
+(1, 2, '2019-04-02', 'Intersport', 'Ballon', '20 cm de diamètre', 9, 'https://media.intersport.fr/is/image/intersportfr/5003248E1Q_FA?$produit_l$'),
+(2, 2, '2019-02-05', 'Babolat', 'Raquette de tennis', '68.5 de longueur', 169.9, 'https://www.protennis.fr/2843-tm_large_default/raquette-babolat-pure-drive-lite-2018.jpg'),
+(3, 2, '2018-11-13', 'Addidas', 'Gants de boxe', '10 OZ', 49.95, 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQT13Wv0CeooLXxK07IO7MuF-HXftnaZD5D3hGb9N8uSmxVH80rl6AiqIEs4LxSSTNM-K9syx-kTA&usqp=CAc'),
+(4, 2, '2019-03-05', 'Itwit', 'Kayak gonflable', 'Longueur : 382 cm\r\nLargeur : 108 cm', 300, 'https://www.decathlon.fr/media/838/8387563/big_1146854.jpg'),
+(5, 2, '2018-12-28', 'Go sport', 'Panier de basket', '2m à 3m', 149.9, 'https://medias.go-sport.com/media/resized/1300x/catalog/product/01/39/63/17/bskt-hoop_1_v1.jpg'),
+(6, 2, '2019-04-07', 'Kipsta', 'But de foot', '120X80 cm', 17, 'https://www.decathlon.fr/media/852/8526869/big_1596030.jpg');
 
 -- --------------------------------------------------------
 
@@ -175,19 +184,23 @@ CREATE TABLE IF NOT EXISTS `vetement` (
   `nom` varchar(255) NOT NULL,
   `prix` float NOT NULL,
   `marque` varchar(255) NOT NULL,
-  `taille` int(10) NOT NULL,
+  `taille` varchar(200) NOT NULL,
   `sexe` tinyint(1) NOT NULL,
   `photo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idvendeur` (`idvendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `vetement`
 --
 
 INSERT INTO `vetement` (`id`, `idvendeur`, `nom`, `prix`, `marque`, `taille`, `sexe`, `photo`) VALUES
-(1, 2, 'Chaussure', 99, 'Nike', 43, 0, 'https://images.asos-media.com/products/nike-air-pegasus-89-baskets-blanc/10610787-1-white?$XXL$&wid=513&fit=constrain');
+(1, 2, 'Chaussure', 99, 'Nike', '43', 0, 'https://images.asos-media.com/products/nike-air-pegasus-89-baskets-blanc/10610787-1-white?$XXL$&wid=513&fit=constrain'),
+(2, 2, 'T-shirt Supreme', 70, 'Supreme', 'M', 0, 'https://www.teewinek.com/wp-content/uploads/2018/08/T-shirt-Supreme-tee-shirt-personnalis%C3%A9-T-shirt-Supreme-en-Tunisie-510x510.png'),
+(3, 2, 'Jean ', 79, 'Levis ', '42', 0, 'https://mosaic03.ztat.net/vgs/media/article-image-mhq/LE/22/2G/07/FK/11/LE222G07F-K11@16.jpg?imwidth=1524'),
+(4, 2, 'Casquette ', 29.99, 'Ralph Lauren', 'M', 0, 'https://images-na.ssl-images-amazon.com/images/I/813IkcnYiCL._UX679_.jpg'),
+(5, 2, 'Chaussure superstar', 79.95, 'Addidas', '38', 1, 'https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/4ed6658e09594a52acd9a976013f44fc_9366/Chaussure_Superstar_blanc_DB3346_01_standard.jpg');
 
 --
 -- Contraintes pour les tables déchargées
