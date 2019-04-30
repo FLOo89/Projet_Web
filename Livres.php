@@ -114,10 +114,33 @@
     </div>
   </div>
 </div>
-         
-        
+
+       <script src="jquery.js"></script>
+    <script>
+      $(function() {
+        var idbutton = "aj" + "<?php echo $i; ?>";
+        var prix="<?php echo $donnees['prix']; ?>";
+        var nom=<?php echo $donnees['nom']; ?>;
+        var auteur=<?php echo $donnees['auteur']; ?>
+        var style=<?php echo $donnees['style']; ?>;
+        var vendeur=<?php echo $donnees['idvendeur']; ?>;
+
+        var div = $(idbutton);
+        $.data(div, 'MonProduit', {prix:12, nom:"bonjour", auteur:auteur, style:style, vendeur:vendeur});
+        var val1 = $.data(div, 'MonProduit').prix;
+        var val2 = $.data(div, 'MonProduit').nom;
+        var val3 = $.data(div, 'MonProduit').auteur;
+        $(idbutton).text(val1);
+        $('#sp2').text(val2);
+        $('#sp3').text(val3);
+
+        }); 
+    </script>
+  
     <?php
     $i++;
+
+   
     }
     ?>
 
@@ -153,16 +176,4 @@
      </footer>
 
 
-     <script src="jquery.js"></script>
-    <script>
-      $(function() {
-        var div = $('div')[0];
-        $.data(div, 'mesValeurs', {premier: 'bonjour', deuxieme: 12, troisieme: 'http://www.siteduzero.com'});
-        var val1 = $.data(div, 'mesValeurs').premier;
-        var val2 = $.data(div, 'mesValeurs').deuxieme;
-        var val3 = $.data(div, 'mesValeurs').troisieme;
-        $('#sp1').text(val1);
-        $('#sp2').text(val2);
-        $('#sp3').text(val3);
-        }); 
-    </script>    
+        
