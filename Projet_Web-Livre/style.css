@@ -1,0 +1,66 @@
+.produit{
+    margin: 4em auto;   
+    padding: 1em;   
+    position: relative; 
+}
+
+
+.card{
+    margin-bottom: 20px; 
+    
+}
+.header {        
+    background-image: url('https://lecourrieraustralien.cdnartwhere.eu/wp-content/uploads/2017/03/van-du-livre-cover-1300x722.jpg');        
+    background-size: cover;        
+    background-position: center;        
+    position: relative; 
+} 
+
+.song {        
+    background-image: url('https://medias.cerveauetpsycho.fr/api/v1/images/view/5b2b7fdc3e45460c12633d1f/wide_1300/image.jpg');        
+    background-size: cover;        
+    background-position: center;        
+    position: relative; 
+} 
+
+.clothes {        
+    background-image: url('http://www.modeandthecity.net/wp-content/uploads/2017/09/Blog-Mode-And-The-City-Lifestyle-Comment-Ranger-Stocker-Vetements-Saison-2.jpg');        
+    background-size: cover;        
+    background-position: center;        
+    position: relative; 
+} 
+
+.sport {        
+    background-image: url('https://www.saintcyr78.fr/wp-content/uploads/2018/12/Sports-e1544731833709.png');        
+    background-size: cover;        
+    background-position: center;        
+    position: relative; 
+} 
+
+.overlay{
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0px;
+    top:0px;
+    background-color: rgba(0, 0, 0, 0.4); 
+
+}
+.card img{
+    width: 200px;
+    height: 200px;
+    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); /**pour safari et chrome**/
+    -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);     /* pour mozilla*/
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);   
+    margin: 10px; 
+}
+.page-footer {   
+    background-color: #222;   
+    color: #ccc; 
+    padding: 60px 0 30px; 
+} 
+
+.footer-copyright {   
+    color: #666;   
+    padding: 40px 0; 
+} 
