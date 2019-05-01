@@ -4,7 +4,49 @@
     position: relative; 
 }
 
+body{
+    padding-top: 100px; 
+   
+}
+.signupVendeur{
+    background: rgba(0, 0, 0, 0.4); 
+    padding: 40px;
+    margin-bottom: 20px; 
+}
 
+.signupVendeur label{
+    font-weight: bold; 
+    color: aliceblue
+}
+
+.signupVendeur legend{
+    font-weight: bold; 
+    color:green;
+}
+
+.loginform{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 500px;
+    box-sizing: border-box;
+    background:rgba(0, 0, 0, 0.5);
+    padding: 40px; 
+}
+.titrePvendeur{
+font-family: Arial; 
+font-size: 24px;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #15B61C;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: small-caps;
+text-transform: uppercase;
+}
 .card{
     margin-bottom: 20px;
     

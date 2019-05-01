@@ -13,11 +13,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
 </head>
-<body>
+<body style="padding-top:0px;">
 <?php $index=0; ?>
 <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -27,7 +27,7 @@
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand" href="main.php"> 
-    <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">ECE Amazon</a>
+    <img src="ECE_Amazon.png" width="30" height="30" class="d-inline-block align-top" alt="">ECE Amazon</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -48,9 +48,13 @@
           <a class="dropdown-item" href="LoisirSport.php"> <i class="fa fa-bicycle"></i> <span> Sports et Loisirs</span></a>
         </div>
       </li>
-      <button class="btn btn-outline-success my-2 my-sm-0" onclick="document.location.href='loginPage.html';">Sign in</button>
-      <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='Panier.php';"><span class="fa fa-shopping-basket"></span></button>
     </ul>
+    <div class="nav pull-right"> 
+        <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.html';">Sign in</button>
+        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='signup_vendeur.html';">Sign up</button>
+        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect</button>
+        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick=""><span class="fa fa-shopping-basket"></span></button>
+    </div>
   </div>
 </nav>
 

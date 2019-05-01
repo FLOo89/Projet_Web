@@ -28,7 +28,8 @@
 				$_SESSION['email']=$row['email'];
 				$_SESSION['nom']=$row['nom'];
 				$_SESSION['photo']=$row['photo'];
-    			$_SESSION['imagefond']=$row['imagefond'];
+				$_SESSION['imagefond']=$row['imagefond'];
+				$_SESSION['idvendeur']=$row['id'];
 
 				echo 'Vous êtes connecté !';
 				//header('location:profilVendeur.php');

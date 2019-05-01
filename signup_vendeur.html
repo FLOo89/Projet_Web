@@ -1,32 +1,122 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-       page inscription
-    </title>
-</head>
-<body>
-  <form action='signup_vendeur.php' method='POST'>
-    <label>Pseudo :</label>
-    <input type="text" name="pseudo" placeholder="Nom d'utilisateur " /><br />
-    <label>Email :</label>
-    <input type="text" name="email" placeholder="Email " /><br />
-    <label>Nom :</label>
-    <input type="text" name="nom" placeholder="Nom " /><br />
-    <label>Photo identité :</label>
-    <input type="text" name="photo" placeholder="URL photo " /><br />
-    <label>Image fond :</label>
-    <input type="text" name="imagefond" placeholder="URL image fond " /><br />
-    <label>Type d'utilisateur :</label>
-    <select name="type_user">
-      <option value="1" selected>Vendeur</option>
-      <option value="0">Vendeur Administrateur</option>
-    </select><br />
-    <input type="submit" value="S'inscrire" >
-  </form>
-</body>
+    <!DOCTYPE html>
+    <html lang="fr">
+    
+    <head>
+        <meta charset="utf-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1">      
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <title>
+           page inscription
+        </title>
+    </head>
+    <body style="background-image: url(https://remote.co/wp-content/uploads/2018/05/Remote-Work-More-Than-a-Perk-for-Pros-with-Chronic-Conditions.jpg); background-size: cover">
+    
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"> 
+              <img src="ECE_Amazon.png" width="40" height="40" class="d-inline-block align-top" alt="">ECE Amazon</a>
+          
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#"> Ventes Flash<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Categories
+                    </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="Livres.php"><span> <span class="fa fa-book"></span> Livres</span></a>
+                    <a class="dropdown-item" href="Musique.php">  <i class="fa fa-music"></i><span> Musique</span> </a>
+                    <a class="dropdown-item" href="Vetements.php"> <i class="fa fa-black-tie"></i> <span> Vêtements</span> </a>
+                    <a class="dropdown-item" href="LoisirSport.php"> <i class="fa fa-bicycle"></i> <span> Sports et Loisirs</span></a>
+                  </div>
+                  </li>
+          
+                </ul>
+                    <div class="nav pull-right"> 
+                  <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.html';">Sign in</button>
+                  <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='signup_vendeur.html';">Sign up</button>
+                  <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick=""><span class="fa fa-shopping-basket"></span></button>
+                  </div>
+                
+              </div>
+            </nav>
+    
+    
+    
+      <div class="container "> 
+        <section class="row">
+    
+      <form  class=" signupVendeur col-lg-12" action='signup_vendeur.php' method='POST'>
+        <legend> Devenir Vendeur </legend>
+          <div class="form-group">
+        <label for="pseudo">Pseudo :</label>
+        <input id="pseudo" type="text" class="form-control" name="pseudo" placeholder="Nom d'utilisateur " /><br />
+        </div>
+        <div class="form-group">
+        <label>Email :</label>
+        <input type="text" class="form-control" name="email" placeholder="Email " /><br />
+        </div>
+        <div class="form-group">
+        <label>Nom :</label>
+        <input type="text" class="form-control" name="nom" placeholder="Nom " /><br />
+        </div>
+        <div class="form-group">
+        <label>Photo identité :</label>
+        <input type="text" name="photo" class="form-control" placeholder="URL photo " /><br />
+        </div> 
+        <div class="form-group">
+        <label>Image fond :</label>
+        <input type="text" name="imagefond" class="form-control"placeholder="URL image fond " /><br />
+        </div>
+        <div class="form-group">
+        <label>Type d'utilisateur :</label>
+        <select class="form-control" name="type_user" >
+          <option value="1" selected>Vendeur</option>
+          <option value="0">Vendeur Administrateur</option>
+        </select><br />
+        <input type="submit" class="form-control btn btn-primary mb-2" value="S'inscrire" />
+        </div>
+      </form>
+    
+    </section>
+    
+    </div>
+    <footer class="page-footer"> 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                       <h6 class="text-uppercase font-weight-bold">Information additionnelle</h6> 
+                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu.
+                          Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.</p>
+                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu.
+                          Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.
+                       </p>
+               </div>
+            
 
-</html>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                   <h6 class="text-uppercase font-weight-bold">Contact</h6> 
+                   <p>            
+                           37, quai de Grenelle, 75015 Paris, France <br>             
+                           info@webDynamique.ece.fr <br>             
+                           +33 01 02 03 04 05 <br>             
+                           +33 01 03 02 05 04       
+                      </p> 
+            </div>
+           </div>
+        </div>
+        <div class="footer-copyright text-center">&copy; 2019 Copyright | Droit d'auteur: webDynamique.ece.fr</div> 
+    </footer>
+    </html>
