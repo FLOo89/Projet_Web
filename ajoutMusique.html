@@ -7,22 +7,22 @@
 				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">    
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 				<link rel="stylesheet" href="style.css">        
-				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
 				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <title>page ajout d'article</title>
 </head>
 
 <body>
-    <form action='ajoutArticle.php' method='POST'>
+    <form action='ajoutMusique.php' method='POST'>
 
         <div class="form-group"> 
         <label>Nom :</label>
-        <input type="text" class="form-control" name="nom" placeholder="Nom du livre " />
+        <input type="text" class="form-control" name="nom" placeholder="Nom de l'album" />
         </div>
 
         <div class="form-group">
-        <label>Auteur :</label>
-        <input type="text"class="form-control" name="auteur" placeholder="Auteur du livre " /><br />
+        <label>Artiste :</label>
+        <input type="text"class="form-control" name="auteur" placeholder="Artiste" /><br />
         </div>
 
         <div class="form-group"> </div>
@@ -36,15 +36,10 @@
 
         <div class="form-group"> 
              <label>Photo :</label>
-            <input type="text" class="form-control" name="photo" placeholder="URL couverture" /><br />
+            <input type="text" class="form-control" name="photo" placeholder="URL photo album" /><br />
         </div>
 
-       <div class="form-group" > 
-        <label>Style :</label>
-        <input type="text" class="form-control" name="style" placeholder="Style du livre " /><br />
-        </div>
-
-        <input type="submit" class="form-control btn btn-pr" value="Mettre en vente">
+        <input type="submit" class="form-control btn btn-primary" value="Mettre en vente">
     </form>
 </body>
 

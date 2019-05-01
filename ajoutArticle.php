@@ -1,25 +1,72 @@
-<?php
-		$con = mysqli_connect('localhost','root','root','ece_amazon');
+<!DOCTYPE html>
+<html lang="fr">
 
-		if(!$con){
-			echo "Pas connecté au serveur";
-		}
+<head>
+    	<meta charset="utf-8">  
+				<meta name="viewport" content="width=device-width, initial-scale=1">      
+				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">    
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+				<link rel="stylesheet" href="style.css">        
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <title>page ajout d'article</title>
+</head>
 
-        $idvendeur = '11';
-		$nom = $_POST['nom'];
-		$auteur = $_POST['auteur'];
-        $prix = $_POST['prix'];
-        $date = $_POST['date'];
-        $photo = $_POST['photo'];        
-		$style = $_POST['style'];
+<body>
+        <form id="selectioncategorie" action='profilVendeur.php' method='POST'>
 
-		$sql = "INSERT INTO livre (idvendeur,photo,prix,nom,auteur,style) VALUES ('$idvendeur','$photo','$prix','$nom','$auteur','$style')";
+                <div class="form-group"> 
+                <label>Catégorie de l'article:</label>
+                <select id="inputState"  class="form-control">
+                        <option name="categorie" value="1">Livre</option>
+                        <option name="categorie" value="2">Musique</option>
+                        <option name=categorie value="3">Vetement</option>
+                        <option name="categorie" value="4">Sport et Loisir</option>
+                </select>
+                
+            </div>  
+            </form> 
 
-        if(!mysqli_query($con,$sql)){
-		 	echo "fail";
-		}
-		else{
-			echo "inserted";
-		}
+            <div id="formulairearticle">
+           </div>
 
-?>
+
+<script src="jquery.js"></script>
+<script>
+     $('document').ready(function(){
+       
+      $("option").click(function(){ 
+          if($("#inputState").val()==1)
+          {    alert("rrr"); 
+                $.get("ajoutLivre.html", function(data){
+                $("#formulairearticle").html(data);});
+
+          }
+          if($("#inputState").val()==2)
+          {    alert("rrr"); 
+                $.get("ajoutMusique.html", function(data){
+                $("#formulairearticle").html(data);});
+
+          }
+          if($("#inputState").val()==3)
+          {    alert("rrr"); 
+                $.get("ajoutVetement.html", function(data){
+                $("#formulairearticle").html(data);});
+
+          }
+          if($("#inputState").val()==4)
+          {    alert("rrr"); 
+                $.get("ajoutSport.html", function(data){
+                $("#formulairearticle").html(data);});
+
+          }
+           
+      });
+      
+    });                      
+</script>
+
+
+
+
+</body>

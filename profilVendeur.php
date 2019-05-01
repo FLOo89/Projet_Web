@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <h1>Profil Vendeur</h1>
     <meta charset="utf-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1">      
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">    
@@ -82,7 +81,8 @@
                        <a href="#" class="card-link">Modifier</a>
                     </div>
             </div>
-            <small class="text-muted"><a href="#ajouterarticle" class="btn btn-secondary" data-toggle="modal">Ajouter un article</a> </small>
+            <small class="text-muted"><a href="#ajouterarticle" class="btn btn-primary" style="margin-bottom:10px " data-toggle="modal">Ajouter un article</a> </small> 
+            <small class="text-muted"><a href="#supprimerarticle" class="btn btn-danger" data-toggle="modal">Supprimer un article</a> </small>
         </div>
 
         <div class="col-sm-9 col-lg-9">   
@@ -200,7 +200,27 @@
       </div>
       <div class="modal-body">
         <blockquote>
-       <?php include("ajoutArticle.html"); ?> 
+       <?php 
+            include("ajoutArticle.php"); 
+               
+        ?> 
+        </blockquote>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="supprimerarticle" role="dialog" aria-labelledby="modalTitre" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="modalTitre" class="modal-title">Formulaire d'ajouterarticle</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+      </div>
+      <div class="modal-body">
+        <blockquote>
+       <?php include("suppArticle.html"); ?> 
         </blockquote>
 
       </div>
@@ -210,4 +230,8 @@
       
 
 </body>
+
+
+
+
 </html>

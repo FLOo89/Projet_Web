@@ -30,15 +30,31 @@
 				$_SESSION['photo']=$row['photo'];
 				$_SESSION['imagefond']=$row['imagefond'];
 				$_SESSION['idvendeur']=$row['id'];
+				$_SESSION['user_type']=4;
 
-				echo 'Vous êtes connecté !';
+				header('Location: main.php');
 				//header('location:profilVendeur.php');
 			}
 			else{
 				$row=mysqli_fetch_assoc($resultat);
-				$_SESSION['pseudo']=$row['pseudo'];
+				$_SESSION['pseudo']=$row['email'];
+				$_SESSION['nom']=$row['nom'];
 				$_SESSION['email']=$row['email'];
-        		echo 'Vous êtes connecté !';
+				$_SESSION['adresse']=$row['adresse'];
+				$_SESSION['telephone']=$row['telephone'];
+				$_SESSION['ville']=$row['ville'];
+				$_SESSION['codepostal']=$row['codepostal'];
+				$_SESSION['pays']=$row['pays'];
+				$_SESSION['typecarte']=$row['typecarte'];
+				$_SESSION['numerocarte']=$row['numerocarte'];
+				$_SESSION['proprietairecarte']=$row['proprietairecarte'];
+				$_SESSION['expirationcarte']=$row['expirationcarte'];
+				$_SESSION['cryptogramme']=$row['cryptocarte'];
+				$_SESSION['photo']=$row['photo'];
+				$_SESSION['user_type']=2;
+
+
+        		header('Location: main.php');
 			}
 		}
 		mysqli_free_result($resultat);
