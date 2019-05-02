@@ -47,7 +47,7 @@
         <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.html';">Sign in</button>
         <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='signup_vendeur.html';">Sign up</button>
         <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect</button>
-        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick=""><span class="fa fa-shopping-basket"></span></button>
+        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='monPanier.php';"><span class="fa fa-shopping-basket"></span></button>
         </div>
     </div>
   </nav>
@@ -65,7 +65,7 @@
       var utilisateur_type =<?php echo $user_type ?>;
 
       if(utilisateur_type==4)
-      {alert(utilisateur_type);
+      {//alert(utilisateur_type);
         $("#navitem2").after('<a class="nav-link" href="profilVendeur.php">Compte Vendeur</a>');
       }
       if(utilisateur_type==2)

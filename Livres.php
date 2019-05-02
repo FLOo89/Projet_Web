@@ -17,7 +17,7 @@
 <?php $index=0; ?>
 <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -90,7 +90,7 @@
                
             </div> 
             <div class="card-footer">
-                     <small class="text-muted">  <a href="#" id="aj<?php echo $i?>" class="btn btn-primary">ajouter au panier </a></small>
+                     <small class="text-muted">  <a href="remplirPanier.php?id=<?php echo $donnees['id']; ?>&type=Livres" id="aj<?php echo $i?>" class="btn btn-primary">ajouter au panier </a></small>
                      <small class="text-muted"><a href="#infos<?php echo $i?>" class="btn btn-secondary" data-toggle="modal">infos</a> </small>
             </div>
  
