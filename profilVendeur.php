@@ -82,7 +82,6 @@
                     </div>
             </div>
             <small class="text-muted"><a href="#ajouterarticle" class="btn btn-primary" style="margin-bottom:10px " data-toggle="modal">Ajouter un article</a> </small> 
-            <small class="text-muted"><a href="#supprimerarticle" class="btn btn-danger" data-toggle="modal">Supprimer un article</a> </small>
         </div>
 
         <div class="col-sm-9 col-lg-9">   
@@ -105,6 +104,9 @@
                     <strong>prix: </Strong> <?php echo $donnees['prix']; ?> €
                 </p>
             </div>
+            <div class="card-footer">
+                     <small class="text-muted">  <a href="suppArticle.php?id=<?php echo $donnees['id']; ?>&type=livre&page=profilVendeur.php" id="aj<?php echo $i?>" class="btn btn-danger">Supprimer article </a></small>        
+            </div>
         </div>
 
         <?php
@@ -112,7 +114,7 @@
     }
     ?>
      <?php
-    $i=0; 
+   
     $response = $bdp->prepare('SELECT * FROM Musique WHERE idvendeur=? ');
     $response->execute(array($_SESSION['idvendeur']));
     while($donnees = $response->fetch())
@@ -128,7 +130,9 @@
                     <strong>prix: </Strong> <?php echo $donnees['prix']; ?> €
                 </p>
             </div>
- 
+            <div class="card-footer">
+                     <small class="text-muted">  <a href="suppArticle.php?id=<?php echo $donnees['id']; ?>&type=musique&page=profilVendeur.php" id="aj<?php echo $i?>" class="btn btn-danger">Supprimer article </a></small>        
+            </div>
         </div>
 
         <?php
@@ -136,7 +140,7 @@
     }
     ?>
      <?php
-    $i=0; 
+    
     $response = $bdp->prepare('SELECT * FROM sportloisir WHERE idvendeur=? ');
     $response->execute(array($_SESSION['idvendeur']));
     while($donnees = $response->fetch())
@@ -154,7 +158,9 @@
                
                
             </div> 
-        
+            <div class="card-footer">
+                     <small class="text-muted">  <a href="suppArticle.php?id=<?php echo $donnees['id']; ?>&type=sportloisir&page=profilVendeur.php" id="aj<?php echo $i?>" class="btn btn-danger">Supprimer article </a></small>        
+            </div>
         </div>
 
         <?php
@@ -162,7 +168,7 @@
     }
     ?>
      <?php
-    $i=0; 
+    
     $response = $bdp->prepare('SELECT * FROM vetement WHERE idvendeur=? ');
     $response->execute(array($_SESSION['idvendeur']));
     while($donnees = $response->fetch())
@@ -180,7 +186,9 @@
                
                
             </div> 
- 
+            <div class="card-footer">
+                     <small class="text-muted">  <a href="suppArticle.php?id=<?php echo $donnees['id']; ?>&type=vetement&page=profilVendeur.php" id="aj<?php echo $i?>" class="btn btn-danger">Supprimer article </a></small>        
+            </div>
         </div>
 
         <?php
@@ -201,8 +209,7 @@
       <div class="modal-body">
         <blockquote>
        <?php 
-            include("ajoutArticle.php"); 
-               
+            include("ajoutArticle.php");  
         ?> 
         </blockquote>
 
@@ -211,23 +218,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="supprimerarticle" role="dialog" aria-labelledby="modalTitre" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 id="modalTitre" class="modal-title">Formulaire d'ajouterarticle</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-      </div>
-      <div class="modal-body">
-        <blockquote>
-       <?php include("suppArticle.html"); ?> 
-        </blockquote>
-
-      </div>
-    </div>
-  </div>
-</div>
-      
 
 </body>
 

@@ -43,11 +43,10 @@
         <div><?php //echo $_SESSION['pseudo']; ?></div>
 
       </ul>
-          <div class="nav pull-right"> 
-        <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.html';">Sign in</button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='signup_vendeur.html';">Sign up</button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect</button>
-        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick=""><span class="fa fa-shopping-basket"></span></button>
+        <div class="nav pull-right"> 
+        <button id="signin" class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.php';"> Sign in </button> 
+        <button id="disconect" class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect </button>
+        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='monPanier.php';"><span class="fa fa-shopping-basket"></span> </button>
         </div>
     </div>
   </nav>
@@ -63,23 +62,26 @@
 
      $('document').ready(function(){
       var utilisateur_type =<?php echo $user_type ?>;
+      $("#disconect").hide(); 
 
       if(utilisateur_type==4)
-      {alert(utilisateur_type);
+      {
         $("#navitem2").after('<a class="nav-link" href="profilVendeur.php">Compte Vendeur</a>');
+        $("#signin").hide();
+        $("#disconect").show();  
       }
       if(utilisateur_type==2)
       {
         $("#navitem2").after('<a class="nav-link" href="profilAcheteur.php">Mon Compte </a>');
+        $("#signin").hide(); 
+        $("#disconect").show(); 
       }
-    
       if(utilisateur_type==3)
       {
-        $("#navitem2").after('<a class="nav-link" href="profilAcheteur.php">Admin </a>');
+        $("#navitem2").after('<a class="nav-link" href="profilAdmin.php">Admin </a>');
+        $("#signin").hide(); 
+        $("#disconect").show(); 
       }
-
-
-
 
     });
 

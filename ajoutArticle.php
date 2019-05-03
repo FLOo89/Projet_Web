@@ -13,11 +13,11 @@
 </head>
 
 <body>
-        <form id="selectioncategorie" action='profilVendeur.php' method='POST'>
+        <form id="selectioncategorie" action='' method='POST'>
 
                 <div class="form-group"> 
                 <label>Catégorie de l'article:</label>
-                <select id="inputState"  class="form-control">
+                <select class="inputState"  class="form-control">
                         <option name="categorie" value="1">Livre</option>
                         <option name="categorie" value="2">Musique</option>
                         <option name=categorie value="3">Vetement</option>
@@ -27,37 +27,38 @@
             </div>  
             </form> 
 
-            <div id="formulairearticle">
+            <div class="formulairearticle">
            </div>
 
 
 <script src="jquery.js"></script>
 <script>
+
      $('document').ready(function(){
        
       $("option").click(function(){ 
-          if($("#inputState").val()==1)
-          {    alert("rrr"); 
+          if($(".inputState").val()==1)
+          {    
                 $.get("ajoutLivre.html", function(data){
-                $("#formulairearticle").html(data);});
+                $(".formulairearticle").html(data);});
 
           }
-          if($("#inputState").val()==2)
-          {    alert("rrr"); 
+          if($(".inputState").val()==2)
+          {     
                 $.get("ajoutMusique.html", function(data){
-                $("#formulairearticle").html(data);});
+                $(".formulairearticle").html(data);});
 
           }
-          if($("#inputState").val()==3)
-          {    alert("rrr"); 
+          if($(".inputState").val()==3)
+          {    
                 $.get("ajoutVetement.html", function(data){
-                $("#formulairearticle").html(data);});
+                $(".formulairearticle").html(data);});
 
           }
-          if($("#inputState").val()==4)
-          {    alert("rrr"); 
+          if($(".inputState").val()==4)
+          {   
                 $.get("ajoutSport.html", function(data){
-                $("#formulairearticle").html(data);});
+                $(".formulairearticle").html(data);});
 
           }
            

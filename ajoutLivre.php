@@ -1,6 +1,7 @@
 <?php
 	session_start();
 
+	$erreur=" "; 
 		$con = mysqli_connect('localhost','root','','ece_amazon');
 
 		if(!$con){
@@ -15,14 +16,17 @@
         $photo = isset($_POST['photo'])?$_POST['photo']:" ";   
         $modele = isset($_POST['modele'])?$_POST['modele']:" "; 
 		$style = isset($_POST['style'])?$_POST['style']:" "; 
-		
-		$sql = "INSERT INTO livre (idvendeur,photo,prix,nom,date,auteur,style,modele) VALUES ('$idvendeur','$photo','$prix','$nom','$date','$auteur','$style',$modele)";
+
+		$sql = "INSERT INTO livre (idvendeur,photo,prix,nom,date,auteur,style,modele) VALUES ('$idvendeur','$photo','$prix','$nom','$date','$auteur','$style','$modele')";
 
         if(!mysqli_query($con,$sql)){
-		 	echo "fail";
+			 $erreur="objet non inseré verifier les formats de saisie";
+			 echo mysqli_error($con); 
 		}
 		else{
 			echo "inserted";
+			
 		}
 
 ?>
+

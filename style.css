@@ -52,12 +52,47 @@ body{
     background:rgba(0, 0, 0, 0.5);
     padding: 40px; 
 }
-.titrePvendeur{
+
+.loginform2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-10%);
+    width: 700px;
+    height: 260%;
+    box-sizing: border-box;
+    background:rgba(0, 0, 0, 0.5);
+    padding: 40px; 
+    color:white; 
+    font-size: 1.1em; 
+}
+.loginform3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-123%,-34%);
+    width: 500px;
+    height: 600px;
+    box-sizing: border-box;
+    background:rgba(0, 0, 0, 0.5);
+    padding: 40px; 
+    color:white; 
+    font-size: 1.1em; 
+}
+.loginform2 legend {
+
+    color: orangered;
+    font-weight: bold; 
+}
+
+
+
+#titrePvendeur{
 font-family: Arial; 
 font-size: 24px;
 letter-spacing: 2px;
 word-spacing: 2px;
-color: #15B61C;
+color: #222; 
 font-weight: 700;
 text-decoration: none;
 font-style: normal;

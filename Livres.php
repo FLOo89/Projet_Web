@@ -27,36 +27,76 @@
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand" href="main.php"> 
-  <img src="ECE_Amazon.png" width="30" height="30" class="d-inline-block align-top" alt="">ECE Amazon</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <img src="ECE_Amazon.png" width="40" height="40" class="d-inline-block align-top" alt="">ECE Amazon</a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"> Ventes Flash</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">(current)</span>Categories
-        </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"> Ventes Flash<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown" id="navitem2">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Categories
+          </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="Livres.php"><span class="sr-only">(current)</span> <span class="fa fa-book"></span> Livres</a>
+          <a class="dropdown-item" href="Livres.php"><span> <span class="fa fa-book"></span> Livres</span></a>
           <a class="dropdown-item" href="Musique.php">  <i class="fa fa-music"></i><span> Musique</span> </a>
           <a class="dropdown-item" href="Vetements.php"> <i class="fa fa-black-tie"></i> <span> Vêtements</span> </a>
-          <a class="dropdown-item" href="LoisirSport"> <i class="fa fa-bicycle"></i> <span> Sports et Loisirs</span></a>
+          <a class="dropdown-item" href="LoisirSport.php"> <i class="fa fa-bicycle"></i> <span> Sports et Loisirs</span></a>
         </div>
-      </li>
-    </ul>
-    <div class="nav pull-right"> 
-        <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.html';">Sign in</button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='signup_vendeur.html';">Sign up</button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect</button>
-        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick=""><span class="fa fa-shopping-basket"></span></button>
+        </li>
+        <div><?php //echo $_SESSION['pseudo']; ?></div>
+
+      </ul>
+        <div class="nav pull-right"> 
+        <button id="signin" class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.php';"> Sign in </button> 
+        <button id="disconect" class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect </button>
+        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='monPanier.php';"><span class="fa fa-shopping-basket"></span> </button>
+        </div>
     </div>
-  </div>
-</nav>
+  </nav>
+<!-- Fin navbar -->
+
+<?php 
+    $user_type=isset($_SESSION["user_type"])?$_SESSION["user_type"]:0;   
+  ?>
+
+
+<script src="jquery.js"></script>
+<script>
+
+     $('document').ready(function(){
+      var utilisateur_type =<?php echo $user_type ?>;
+      $("#disconect").hide(); 
+
+      if(utilisateur_type==4)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilVendeur.php">Compte Vendeur</a>');
+        $("#signin").hide();
+        $("#disconect").show();  
+      }
+      if(utilisateur_type==2)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilAcheteur.php">Mon Compte </a>');
+        $("#signin").hide(); 
+        $("#disconect").show(); 
+      }
+      if(utilisateur_type==3)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilAdmin.php">Admin </a>');
+        $("#signin").hide(); 
+        $("#disconect").show(); 
+      }
+
+    });
+
+                         
+</script>
+
 
 
   <header class="page-header header container-fluid">
@@ -90,7 +130,7 @@
                
             </div> 
             <div class="card-footer">
-                     <small class="text-muted">  <a href="#" id="aj<?php echo $i?>" class="btn btn-primary">ajouter au panier </a></small>
+                     <small class="text-muted">  <a href="remplirPanier.php?id=<?php echo $donnees['id']; ?>&type=Livres" id="aj<?php echo $i?>" class="btn btn-primary">ajouter au panier </a></small>
                      <small class="text-muted"><a href="#infos<?php echo $i?>" class="btn btn-secondary" data-toggle="modal">infos</a> </small>
             </div>
  
@@ -156,18 +196,4 @@
          <div class="footer-copyright text-center">&copy; 2019 Copyright | Droit d'auteur: webDynamique.ece.fr</div> 
      </footer>
 
-
-     <script src="jquery.js"></script>
-    <script>
-      $(function() {
-        var div = $('div')[0];
-        $.data(div, 'mesValeurs', {premier: 'bonjour', deuxieme: 12, troisieme: 'http://www.siteduzero.com'});
-        var val1 = $.data(div, 'mesValeurs').premier;
-        var val2 = $.data(div, 'mesValeurs').deuxieme;
-        var val3 = $.data(div, 'mesValeurs').troisieme;
-        $('#sp1').text(val1);
-        $('#sp2').text(val2);
-        $('#sp3').text(val3);
-        }); 
-    </script>   
     </body> 

@@ -84,7 +84,7 @@
                         <li type="password" class="list-group-item"> numero de carte: <?php echo $_SESSION['numerocarte']?> </li>
                         <li type="password" class="list-group-item"> propriétaire carte: <?php echo $_SESSION['proprietairecarte']?> </li>
                         <li type="password" class="list-group-item"> expiration carte: <?php echo $_SESSION['expirationcarte']?> </li>
-                        <li type="password" class="list-group-item"> cryptogramme carte: <?php echo $_SESSION['proprietairecarte']?> </li>
+                        <li type="password" class="list-group-item"> cryptogramme carte: <?php echo $_SESSION['cryptogramme']?> </li>
                         </ul>
                         </div> 
                     </div>

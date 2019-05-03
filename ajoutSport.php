@@ -20,6 +20,7 @@
 
         if(!mysqli_query($con,$sql)){
              echo "fail";
+             echo mysqli_error($con); 
 		}
 		else{
 			echo "inserted";

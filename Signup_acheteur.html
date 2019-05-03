@@ -39,72 +39,92 @@
 						<a class="dropdown-item" href="LoisirSport.php"> <i class="fa fa-bicycle"></i> <span> Sports et Loisirs</span></a>
 					  </div>
 					  </li>
-
+			  
 					</ul>
 						<div class="nav pull-right"> 
 					  <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.html';">Sign in</button>
-					  <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='signup_acheteur.html';">Sign up</button>
 					  <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick=""><span class="fa fa-shopping-basket"></span></button>
 					  </div>
 					
 				  </div>
 				</nav>
 
-	<form class="loginform needs-validation " action='loginPage.php' method='POST'>
-		<legend> Login Form</legend>
+	<form class="loginform2 " action='Signup_acheteur.php' method='POST'>
+		<legend> Sign up Form</legend>
 		<div class="form-group">
-		<label>Pseudo :</label>
-		<input type="text" class="form-control" name="user_name" placeholder="Nom d'utilisateur" required /><br />
-		<div class="invalid-feedback">
-        pseudo requis
-      </div>
+		<label>Nom :</label>
+		<input type="text" class="form-control" name="nom" placeholder="ex: Dupont Jean" /><br />
 		</div>
 		<div class="form-group"> 
 		<label>Email :</label>
-		<input type="text" class="form-control" name="password" placeholder="Mot de passe" required/><br />
-		<div class="invalid-feedback">
-        mot de passe requis
+		<input type="text" class="form-control" name="email" placeholder="ex: flo@gmail.com " /><br />
+    </div>
+
+    <div class="form-group"> 
+        <label>mot de passe:</label>
+        <input type="password" class="form-control" name="password" placeholder="" /><br />
+        </div>
+
+    <div class="form-group"> 
+      <label>ville:</label>
+       <input type="text" class="form-control" name="ville" placeholder="ex Paris " /><br />
       </div>
 
-		</div>
-		<div class="form-group"> 
-		<label>Type d'utilisateur :</label>
-		<select class="form-control" name="type_user">
-			<option value="vendeur" selected>Vendeur</option>
-			<option value="acheteur">Acheteur</option>
-			<option value="admin">Admin</option>
-		</select><br />
-		</div>
-		<input type="submit" class="form-control btn btn-primary mb-2" value="Se connecter" >
+      <div class="form-group"> 
+            <label>adresse:</label>
+             <input type="text" class="form-control" name="adresse" placeholder="ex Paris " /><br />
+            </div>
+    <div class="form-group"> 
+               <label>code postal</label>
+                <input type="text" class="form-control" name="cd" placeholder="ex Paris " /><br />
+    </div>
+
+    <div class="form-group"> 
+        <label>pays</label>
+         <input type="text" class="form-control" name="pays" placeholder="ex: France " /><br />
+      </div>
+
+      <div class="form-group"> 
+          <label>telephone</label>
+           <input type="text" class="form-control" name="telephone" placeholder=" " /><br />
+        </div>
+
+    <legend>Informations de Paiments</legend>
+    
+ <div class="form-group"> 
+          <label>type de carte:</label>
+          <select name="typedecarte"  class="form-control">
+              <option name="categorie" value="Master Card">Master Card</option>
+              <option name="categorie" value="Visa">Visa</option>
+      </select>
+        </div>
+
+        <div class="form-group"> 
+            <label>Numero de carte</label>
+             <input type="text" class="form-control" name="nc" placeholder="" /><br />
+          </div>
+          <div class="form-group"> 
+              <label>proprietaire</label>
+               <input type="text" class="form-control" name="proprio" placeholder="" /><br />
+          </div>
+          <div class="form-group"> 
+              <label>date d'expiration </label>
+               <input type="date" class="form-control" name="dateexpi" placeholder="" /><br />
+            </div>
+            <div class="form-group"> 
+                <label>cryptogramme</label>
+                 <input type="text" class="form-control" name="crypto" placeholder="" /><br />
+              </div>
+              <div class="form-group"> 
+                  <label>photo</label>
+                   <input type="text" class="form-control" name="photo" placeholder="Url de la photo" /><br />
+                </div>
+
+		<input type="submit" class="form-control btn btn-primary mb-2" value="S'inscrire" >
 	</form>
 
 	
 </body>
-
-<script type="text/javascript" > 
-		// Example starter JavaScript for disabling form submissions if there are invalid fields
-		(function() {
-			'use strict';
-			window.addEventListener('load', function() {
-				// Fetch all the forms we want to apply custom Bootstrap validation styles to
-				var forms = document.getElementsByClassName('needs-validation');
-				// Loop over them and prevent submission
-				var validation = Array.prototype.filter.call(forms, function(form) {
-					form.addEventListener('submit', function(event) {
-						if (form.checkValidity() === false) {
-							event.preventDefault();
-							event.stopPropagation();
-						}
-						form.classList.add('was-validated');
-					}, false);
-				});
-			}, false);
-		})();
-		</script>
-
-
-
-
 </html>
 
 

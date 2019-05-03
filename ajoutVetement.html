@@ -51,9 +51,28 @@
                 <label>modele :</label>
                 <input type="text" class="form-control" name="modele" placeholder="num modele " /><br />
                 </div>
+        <button id="ajoutdesc" type="button" class="btn btn-secondary btn-sm">ajouter des caratéristiques</button><br />
+        <div id="descr" class="form-group" > 
+                <label>Description :</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">ajouter des caractéristiques</textarea>    
+        </div><br />
 
         <input type="submit" class="form-control btn btn-primary" value="Mettre en vente">
     </form>
 </body>
-
+<script> 
+        $('document').ready(function(){
+           $("#descr").hide();
+           $('#ajoutdesc').click(function()
+            {
+            $("#descr").toggle();
+            $('#ajoutdesc').text("ne plus ajouter");  
+            if( !$("#descr").is(":visible"))  
+            {
+               $('ajoutdesc').text("ajouter des caratéristique");  
+            }                            
+           });
+       });
+   </script>
+   
 </html>
