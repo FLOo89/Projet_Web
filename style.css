@@ -131,6 +131,10 @@ text-transform: uppercase;
     position: relative; 
 } 
 
+.arpanier{
+   background-color: rgba(231, 232, 240, 0.8); 
+}
+
 .overlay{
     position: absolute;
     min-height: 100%;
@@ -157,4 +161,12 @@ text-transform: uppercase;
 .footer-copyright {   
     color: #666;   
     padding: 40px 0; 
+}
+
+.infopaiment{
+
+    background-color: rgba(231, 232, 240, 0.8); 
+    margin-bottom: 20%;
+    left:10%;
+
 }

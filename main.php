@@ -14,7 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="background-image:url('MAIN.png'); background-size: cover;">
   <!-- Début navbar -->        
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand" href="main.php"> 
@@ -44,7 +44,8 @@
 
       </ul>
         <div class="nav pull-right"> 
-        <button id="signin" class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.php';"> Sign in </button> 
+        <button id="signin" class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.php';"> Sign in </button>
+        <button id="signup" class="  btn btn-outline-primary my-2 my-sm-0  " onclick="document.location.href='Signup_acheteur.html';"> Sign up </button> 
         <button id="disconect" class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect </button>
         <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='monPanier.php';"><span class="fa fa-shopping-basket"></span> </button>
         </div>
@@ -63,23 +64,27 @@
      $('document').ready(function(){
       var utilisateur_type =<?php echo $user_type ?>;
       $("#disconect").hide(); 
+      $("#signup").show();
 
       if(utilisateur_type==4)
       {
         $("#navitem2").after('<a class="nav-link" href="profilVendeur.php">Compte Vendeur</a>');
         $("#signin").hide();
+        $("#signup").hide();
         $("#disconect").show();  
       }
       if(utilisateur_type==2)
       {
         $("#navitem2").after('<a class="nav-link" href="profilAcheteur.php">Mon Compte </a>');
         $("#signin").hide(); 
+        $("#signup").hide();
         $("#disconect").show(); 
       }
       if(utilisateur_type==3)
       {
         $("#navitem2").after('<a class="nav-link" href="profilAdmin.php">Admin </a>');
         $("#signin").hide(); 
+        $("#signup").hide();
         $("#disconect").show(); 
       }
 
@@ -87,10 +92,5 @@
 
                          
 </script>
-
-
-
-
-
 
 </body>

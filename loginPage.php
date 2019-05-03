@@ -24,8 +24,9 @@
 			if(mysqli_num_rows($resultat)==0){
 				$erreur='informatons saisies incorectes';
 			}
-			else if($type_user=="vendeur"){
-				$row=mysqli_fetch_assoc($resultat);
+			$row=mysqli_fetch_assoc($resultat);
+			 if($type_user=="vendeur" &&  $row["admin"]==0){
+				//$row=mysqli_fetch_assoc($resultat);
 				//on charge dans la session toutes les données du vendeur
 				$_SESSION['pseudo']=$row['pseudo'];
 				$_SESSION['email']=$row['email'];
@@ -38,8 +39,8 @@
 				header('Location: main.php');
 				
 			}
-			else if($type_user=="admin"){
-				$row=mysqli_fetch_assoc($resultat);
+			 if($type_user=="admin" && $row["admin"]==1){
+			//	$row=mysqli_fetch_assoc($resultat);
 				//on charge dans la session toutes les données du vendeur
 				$_SESSION['pseudo']=$row['pseudo'];
 				$_SESSION['email']=$row['email'];
@@ -52,8 +53,8 @@
 				header('Location: main.php');
 				
 			}
-			else{
-				$row=mysqli_fetch_assoc($resultat);
+			if($type_user=="acheteur")
+			{//	$row=mysqli_fetch_assoc($resultat);
 				$_SESSION['pseudo']=$row['email'];
 				$_SESSION['nom']=$row['nom'];
 				$_SESSION['email']=$row['email'];

@@ -16,9 +16,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
-<body style="background-image: url(https://cdn.pixabay.com/photo/2016/06/17/06/04/background-1462755_960_720.jpg); background-size: cover"> 
+<body style="background-image: url(https://cdn.pixabay.com/photo/2016/06/17/06/04/background-1462755_960_720.jpg); background-size: cover;"> 
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+
+  <!-- Début navbar -->        
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand" href="main.php"> 
     <img src="ECE_Amazon.png" width="40" height="40" class="d-inline-block align-top" alt="">ECE Amazon</a>
 
@@ -31,7 +33,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="#"> Ventes Flash<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" id="navitem2">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Categories
           </a>
@@ -42,17 +44,63 @@
           <a class="dropdown-item" href="LoisirSport.php"> <i class="fa fa-bicycle"></i> <span> Sports et Loisirs</span></a>
         </div>
         </li>
-        <div><?php echo $_SESSION['pseudo']; ?></div>
+        <div><?php //echo $_SESSION['pseudo']; ?></div>
 
       </ul>
-          <div class="nav pull-right"> 
-        <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.html';">Sign in</button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='signup_vendeur.html';">Sign up</button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect</button>
-        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick=""><span class="fa fa-shopping-basket"></span></button>
+        <div class="nav pull-right"> 
+        <button id="signin" class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.php';"> Sign in </button>
+        <button id="signup" class="  btn btn-outline-primary my-2 my-sm-0  " onclick="document.location.href='Signup_acheteur.html';"> Sign up </button> 
+        <button id="disconect" class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect </button>
+        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='monPanier.php';"><span class="fa fa-shopping-basket"></span> </button>
         </div>
     </div>
   </nav>
+<!-- Fin navbar -->
+
+<?php 
+    $user_type=isset($_SESSION["user_type"])?$_SESSION["user_type"]:0;   
+  ?>
+
+
+<script src="jquery.js"></script>
+<script>
+
+     $('document').ready(function(){
+      var utilisateur_type =<?php echo $user_type ?>;
+      $("#disconect").hide(); 
+      $("#signup").show();
+
+      if(utilisateur_type==4)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilVendeur.php">Compte Vendeur</a>');
+        $("#signin").hide();
+        $("#signup").hide();
+        $("#disconect").show();  
+      }
+      if(utilisateur_type==2)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilAcheteur.php">Mon Compte </a>');
+        $("#signin").hide(); 
+        $("#signup").hide();
+        $("#disconect").show(); 
+      }
+      if(utilisateur_type==3)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilAdmin.php">Admin </a>');
+        $("#signin").hide(); 
+        $("#signup").hide();
+        $("#disconect").show(); 
+      }
+
+    });
+
+                         
+</script>
+<!-- Fin navbar -->
+
+<?php 
+    $user_type=isset($_SESSION["user_type"])?$_SESSION["user_type"]:0;   
+  ?>
 
   <div class="container"> 
         <div class="row">

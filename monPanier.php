@@ -17,7 +17,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="background-image:url('MAIN.png'); background-size: cover;">
   <?php $index=0; ?>
 
   <?php
@@ -30,6 +30,7 @@ $_SESSION['panierlivre']=array();
 $_SESSION['paniermusique']=array();
 $_SESSION['paniervetement']=array();
 $_SESSION['paniersport']=array();
+
 
 //$_SESSION['paniertotal'];
 
@@ -81,7 +82,31 @@ if ($result->num_rows > 0) {
     }
 }
 
+
 $conn->close();
+
+function ispannierempty()
+{
+  if(isset($_SESSION['panierlivre'])&&isset($_SESSION['paniermusique'])&&isset($_SESSION['paniervetement'])&&isset($_SESSION['paniersport']))
+  {
+    if(count($_SESSION['panierlivre'])>0 || count($_SESSION['paniermusique'])>0 || count($_SESSION['paniervetement'])>0 || count($_SESSION['paniersport'])> 0)
+  {
+    $empty=0;
+    
+  }
+  else
+  {
+    $empty=1;
+  }
+  }
+  else
+  {
+    $empty=1;
+  }
+
+  return $empty;
+}
+echo count($_SESSION['panierlivre']);
 ?>
 
 
@@ -183,8 +208,25 @@ $conn->close();
           </ul>
         </div>
         
-        <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='passerCommande.php';">Passer commande</button>
-        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='viderPanier.php';">Vider panier</button>
+        <button id="passercommande"class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='passerCommande.php';">Passer commande</button>
+        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='viderPanier.php';">Vider panier</button> 
+            <script src="jquery.js"></script>
+<script>
+ var test =<?php echo ispannierempty(); ?>;
+     $('document').ready(function(){
+  
+      if(test==1)
+      {
+        
+        $("#passercommande").prop('disabled','true');
+          $("#titrePvendeur").after("<p style='color:red; font-size:1.5em;'> Votre panier est vide <span class='fa fa-frown-o'></span></P>")
+      }
+
+
+
+
+     });
+</script>
         </div>
 
       <div class="col-sm-9 col-lg-9">
@@ -202,7 +244,7 @@ $conn->close();
             while($donnees = $response->fetch())
             {
             ?>
-          <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+          <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -229,7 +271,7 @@ $conn->close();
             while($donnees = $response->fetch())
             {
             ?>
-          <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+          <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -256,7 +298,7 @@ $conn->close();
             while($donnees = $response->fetch())
             {
             ?>
-          <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+          <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -283,7 +325,7 @@ $conn->close();
             while($donnees = $response->fetch())
             {
             ?>
-          <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+          <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
