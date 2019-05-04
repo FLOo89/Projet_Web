@@ -32,7 +32,7 @@ $_SESSION['paniervetement']=array();
 $_SESSION['paniersport']=array();
 
 
-//$_SESSION['paniertotal'];
+$_SESSION['paniertotal']=0;
 
 
 // Create connection
@@ -203,7 +203,7 @@ echo count($_SESSION['panierlivre']);
             <p class="card-text"></p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Montant du panier: <?php echo "100$"?> </li>
+            <li id="montantpanier"class="list-group-item">Montant du panier: <?php echo $_SESSION["paniertotal"]?>€ </li>
             <li class="list-group-item">Nb article: <?php echo "12"?> </li>
           </ul>
         </div>
@@ -242,8 +242,9 @@ echo count($_SESSION['panierlivre']);
             $recherche = $_SESSION['panierlivre'][$a];
             $response = $bdp->query("SELECT * FROM livre WHERE id = '$recherche'");
             while($donnees = $response->fetch())
-            {
+            { $_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
+           
           <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
@@ -269,7 +270,7 @@ echo count($_SESSION['panierlivre']);
             $recherche = $_SESSION['paniermusique'][$a];
             $response = $bdp->query("SELECT * FROM musique WHERE id = '$recherche'");
             while($donnees = $response->fetch())
-            {
+            {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
           <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
@@ -296,7 +297,7 @@ echo count($_SESSION['panierlivre']);
             $recherche = $_SESSION['paniersport'][$a];
             $response = $bdp->query("SELECT * FROM sportloisir WHERE id = '$recherche'");
             while($donnees = $response->fetch())
-            {
+            {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
           <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
@@ -323,7 +324,7 @@ echo count($_SESSION['panierlivre']);
             $recherche = $_SESSION['paniervetement'][$a];
             $response = $bdp->query("SELECT * FROM vetement WHERE id = '$recherche'");
             while($donnees = $response->fetch())
-            {
+            {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
           <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
@@ -350,5 +351,12 @@ echo count($_SESSION['panierlivre']);
 
     
 </body>
+
+<script src="jquery.js"> </script>
+<script>
+  $('document').ready(function(){
+     $('#montantpanier').text('Montant du panier: <?php echo $_SESSION["paniertotal"]?>€ ');
+  });
+  </script>
 
 </html>
