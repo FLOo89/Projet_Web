@@ -150,9 +150,24 @@
         <blockquote>
         <img src="<?php echo $donnees['photo'];?>" class="img-fluid" alt="Responsive image">
         <p > 
-            <strong>date: </Strong> <?php echo $donnees['date']; ?> <br>
-        
-            <strong>artiste: </Strong> <?php echo $donnees['artiste']; ?> <br>
+        <table class="table table-striped" style="margin-top:20px;">
+ 
+ <tbody>
+   <tr>
+       <td><strong>date: </Strong> </td>
+       <td><?php echo $donnees['date']; ?></td>
+   </tr>
+   <tr>
+       <td><strong>artiste:</Strong> </td>
+       <td><?php echo $donnees['artiste'];?></td>
+   </tr>
+   <tr>
+       <td><strong>prix:</Strong> </td>
+       <td><?php echo $donnees['prix'];?></td>
+   </tr>
+  
+ </tbody>
+</table>
         </p>
         </blockquote>
 

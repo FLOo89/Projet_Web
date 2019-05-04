@@ -23,9 +23,10 @@
 		if($resultat){
 			if(mysqli_num_rows($resultat)==0){
 				$erreur='informatons saisies incorectes';
+				
 			}
-
-			$row=mysqli_fetch_assoc($resultat);
+			else{
+				$row=mysqli_fetch_assoc($resultat);
 
 			 if($type_user=="vendeur" &&  $row["admin"]==0){
 				//$row=mysqli_fetch_assoc($resultat);
@@ -76,6 +77,9 @@
 
 
         		header('Location: main.php');
+			}
+
+			
 			}
 		}
 		mysqli_free_result($resultat);

@@ -151,9 +151,32 @@
         <blockquote>
         <img src="<?php echo $donnees['photo'];?>" class="img-fluid" alt="Responsive image">
         <p > 
-            <strong>date: </Strong> <?php echo $donnees['date']; ?> <br>
-            <strong>taille: </Strong> <?php echo $donnees['taille']; ?>  <br>
-            <strong>marque: </Strong> <?php echo $donnees['marque']; ?> <br>
+        <table class="table table-striped" style="margin-top:20px;">
+ 
+ <tbody>
+   <tr>
+       <td><strong>marque: </Strong> </td>
+       <td><?php echo $donnees['marque']; ?></td>
+   </tr>
+   <tr>
+       <td><strong>taille:</Strong> </td>
+       <td><?php echo $donnees['taille'];?></td>
+   </tr>
+   <tr>
+       <td><strong>sexe:</Strong> </td>
+       <td><?php echo $donnees['sexe']==1?"femme":"homme";?></td>
+   </tr>
+   <tr>
+       <td><strong>prix:</Strong> </td>
+       <td><?php echo $donnees['prix'];?></td>
+   </tr>
+   <tr>
+       <td><strong>description:</Strong> </td>
+       <td><?php echo $donnees['description'];?></td>
+   </tr>
+  
+ </tbody>
+</table>
         </p>
         </blockquote>
 

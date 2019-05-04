@@ -199,7 +199,7 @@ echo count($_SESSION['panierlivre']);
         <div class="card" style="width: 16rem;">
           <div class="card-body">
             <h5 class="card-title"><?php echo 'Votre pannier:'?></h5>
-            <h4 class="card-title"><?php echo $_SESSION['nom']?></h4>
+            <h4 class="card-title"><?php echo isset($_SESSION['nom'])?$_SESSION['nom']:" " ?></h4>
             <p class="card-text"></p>
           </div>
           <ul class="list-group list-group-flush">

@@ -156,9 +156,25 @@
         <blockquote>
         <img src="<?php echo $donnees['photo'];?>" class="img-fluid" alt="Responsive image">
         <p > 
-            <strong>date: </Strong> <?php echo $donnees['date']; ?> <br>
-            <strong>style: </Strong> <?php echo $donnees['style']; ?> € <br>
-            <strong>auteur: </Strong> <?php echo $donnees['auteur']; ?> <br>
+        <table class="table table-striped">
+ 
+            <tbody>
+              <tr>
+                  <td><strong>date: </Strong> </td>
+                  <td><?php echo $donnees['date']; ?></td>
+              </tr>
+              <tr>
+                  <td><strong>style:</Strong> </td>
+                  <td><?php echo $donnees['style'];?></td>
+              </tr>
+              
+              <tr>
+              <td><strong>auteur: </Strong> </td>
+              <td><?php echo $donnees['auteur']; ?></td>
+              </tr>
+  				
+            </tbody>
+        </table>
         </p>
         </blockquote>
 
