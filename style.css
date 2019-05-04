@@ -59,7 +59,6 @@ body{
     left: 50%;
     transform: translate(-50%,-10%);
     width: 700px;
-    height: 260%;
     box-sizing: border-box;
     background:rgba(0, 0, 0, 0.5);
     padding: 40px; 

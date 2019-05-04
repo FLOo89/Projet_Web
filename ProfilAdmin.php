@@ -259,11 +259,8 @@
 </div>
    
 
-</body>
 
-
-
-<div class="modal fade" id="ajouterarticle" role="dialog" aria-labelledby="modalTitre" aria-hidden="true">
+<div class="modal fade" id="ajouterarticleadmin" role="dialog" aria-labelledby="modalTitre" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -280,5 +277,10 @@
       </div>
     </div>
   </div>
+</div>
+
+</body>
+
+
 
 </html>

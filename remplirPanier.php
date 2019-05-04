@@ -6,7 +6,8 @@
         }
 
         $id = $_GET['id'];
-        $type = $_GET['type'];
+		$type = $_GET['type'];
+		  
 		
 		$sql = "INSERT INTO panier (idarticle,type) VALUES ('$id','$type')";
 

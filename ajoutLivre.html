@@ -8,7 +8,8 @@
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 				<link rel="stylesheet" href="style.css">        
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+               
     <title>page ajout d'article</title>
 </head>
 
@@ -44,33 +45,10 @@
         <input type="text" class="form-control" name="style" placeholder="Style du livre " /><br />
         </div>
         
-        <button id="ajoutdesc" type="button" class="btn btn-secondary btn-sm">ajouter des caratéristiques</button><br />
-        <div id="descr" class="form-group" > 
-                <label>Description :</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">ajouter des caractéristiques</textarea>
-
-        </div><br />
-
-
         <input type="submit" class="form-control btn btn-primary" value="Mettre en vente">
     </form>
 </body>
 
-<script src="jquery.js"></script>
 
-<script> 
-     $('document').ready(function(){
-        $("#descr").hide();
-        $('#ajoutdesc').click(function()
-         {
-         $("#descr").toggle();
-         $('#ajoutdesc').text("ne plus ajouter");  
-         if( !$("#descr").is(":visible"))  
-         {
-            $('ajoutdesc').text("ajouter des caratéristique");  
-         }                            
-        });
-    });
-</script>
 
 </html>

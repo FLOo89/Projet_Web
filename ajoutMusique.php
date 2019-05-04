@@ -13,7 +13,8 @@
         $prix = isset($_POST['prix'])?$_POST['prix']:" ";
         $date = isset($_POST['date'])?$_POST['date']:" ";
         $photo = isset($_POST['photo'])?$_POST['photo']:" ";   
-        $modele = isset($_POST['modele'])?$_POST['modele']:" ";     
+        $modele = isset($_POST['modele'])?$_POST['modele']:" "; 
+         
 		
 
 		$sql = "INSERT INTO musique (idvendeur,nom,prix,date,artiste,photo,modele) VALUES ('$idvendeur','$nom','$prix','$date','$artiste','$photo','$modele')";

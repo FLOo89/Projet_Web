@@ -24,7 +24,9 @@
 			if(mysqli_num_rows($resultat)==0){
 				$erreur='informatons saisies incorectes';
 			}
+
 			$row=mysqli_fetch_assoc($resultat);
+
 			 if($type_user=="vendeur" &&  $row["admin"]==0){
 				//$row=mysqli_fetch_assoc($resultat);
 				//on charge dans la session toutes les données du vendeur
@@ -35,12 +37,12 @@
 				$_SESSION['imagefond']=$row['imagefond'];
 				$_SESSION['idvendeur']=$row['id'];
 				$_SESSION['user_type']=4;
-
+				
 				header('Location: main.php');
 				
 			}
 			 if($type_user=="admin" && $row["admin"]==1){
-			//	$row=mysqli_fetch_assoc($resultat);
+				//$row=mysqli_fetch_assoc($resultat);
 				//on charge dans la session toutes les données du vendeur
 				$_SESSION['pseudo']=$row['pseudo'];
 				$_SESSION['email']=$row['email'];
@@ -54,7 +56,7 @@
 				
 			}
 			if($type_user=="acheteur")
-			{//	$row=mysqli_fetch_assoc($resultat);
+			{	//$row=mysqli_fetch_assoc($resultat);
 				$_SESSION['pseudo']=$row['email'];
 				$_SESSION['nom']=$row['nom'];
 				$_SESSION['email']=$row['email'];
@@ -70,6 +72,7 @@
 				$_SESSION['cryptogramme']=$row['cryptocarte'];
 				$_SESSION['photo']=$row['photo'];
 				$_SESSION['user_type']=2;
+				$_SESSION['idacheteur']=$row['id'];
 
 
         		header('Location: main.php');
@@ -226,30 +229,6 @@
 
 	
 </body>
-
-<script>
-		// Example starter JavaScript for disabling form submissions if there are invalid fields
-		(function() {
-			'use strict';
-			window.addEventListener('load', function() {
-				// Fetch all the forms we want to apply custom Bootstrap validation styles to
-				var forms = document.getElementsByClassName('needs-validation');
-				// Loop over them and prevent submission
-				var validation = Array.prototype.filter.call(forms, function(form) {
-					form.addEventListener('submit', function(event) {
-						if (form.checkValidity() === false) {
-							event.preventDefault();
-							event.stopPropagation();
-						}
-						form.classList.add('was-validated');
-					}, false);
-				});
-			}, false);
-		})();
-		</script>
-
-
-
 
 </html>
 

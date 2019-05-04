@@ -14,9 +14,10 @@
         $taille = isset($_POST['taille'])?$_POST['taille']:" ";
         $photo = isset($_POST['photo'])?$_POST['photo']:" ";   
         $modele = isset($_POST['modele'])?$_POST['modele']:" ";     
-        $marque = isset($_POST['marque'])?$_POST['marque']:" ";     
+        $marque = isset($_POST['marque'])?$_POST['marque']:" ";    
+        $description = isset($_POST['description'])?$_POST['description']:" ";      
 
-		$sql = "INSERT INTO vetement (idvendeur,nom,prix,marque,taille,sexe,photo,modele) VALUES ('$idvendeur','$nom','$prix','$marque','$taille','$sexe','$photo','$modele')";
+		$sql = "INSERT INTO vetement (idvendeur,nom,prix,marque,taille,sexe,photo,modele,description) VALUES ('$idvendeur','$nom','$prix','$marque','$taille','$sexe','$photo','$modele','$description')";
 
         if(!mysqli_query($con,$sql)){
 		 	echo "fail";

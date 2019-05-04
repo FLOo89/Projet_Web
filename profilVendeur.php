@@ -1,7 +1,6 @@
 <?php
 	// tous d'abord il faut démarrer le système de sessions
     session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
-<body style="background-image: url(<?php echo $_SESSION['imagefond']?>) ;background-size: cover;">
+<body style="background-image: url(<?php echo $_SESSION['imagefond']?>) ;background-size: cover;background-position:center">
 <?php $index=0; ?>
 <?php 
     try{
@@ -240,10 +239,6 @@
 </div>
 </div>
 
-
-</body>
-
-
 <div class="modal fade" id="ajouterarticle" role="dialog" aria-labelledby="modalTitre" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -254,13 +249,18 @@
       <div class="modal-body">
         <blockquote>
        <?php 
-            include("ajoutArticle.php");  
+           include("ajoutArticle.php");
         ?> 
         </blockquote>
 
       </div>
     </div>
   </div>
+</div>
+
+</body>
+
+
 
 
 </html>
