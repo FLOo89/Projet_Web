@@ -18,7 +18,7 @@
 <?php $index=0; ?>
 <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -105,8 +105,8 @@
 
     <div class="container"> 
         <div class="row">
-            <div class="col-sm-3 col-lg-3">
-                <div class="card" style="width: 16rem;">
+        <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="card" style="width: 223px;">
                     <img src="<?php echo $_SESSION['photo']?>" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $_SESSION['nom']?></h5>
@@ -123,7 +123,7 @@
             <small class="text-muted"><a href="#ajouterarticle" class="btn btn-primary" style="margin-bottom:10px " data-toggle="modal">Ajouter un article</a> </small> 
         </div>
 
-        <div class="col-sm-9 col-lg-9">   
+        <div class="col-sm-12 col-md-12 col-lg-9">   
             <div class="row" id="titrePvendeur" >Mes articles en vente: </div>
             <div class="row">
         <?php
@@ -134,7 +134,7 @@
     {
         ?>
         
-        <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+        <div class="card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -160,7 +160,7 @@
     {
         ?>
         
-        <div class="card border-dark mb-3 col-xs-1 col-sm-1 col-md-4">
+        <div class="card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -186,7 +186,7 @@
     {
         ?>
         
-        <div class="card border-dark mb-3 col-xs-1 col-sm-1 col-md-4">
+        <div class="card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -214,7 +214,7 @@
     {
         ?>
         
-        <div class="card border-dark mb-3 col-xs-1 col-sm-1 col-md-4">
+        <div class="card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -237,6 +237,23 @@
 </div>
 </div>
 </div>
+
+        
+<div class="modal fade"  role="dialog" aria-labelledby="modalTitre" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="margin-top: 20%;">
+      <div class="modal-header">
+        <h4 id="modalTitre" class="modal-title">Formulaire d'ajout vendeur</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+      </div>
+      <div class="modal-body">
+        <blockquote>
+       <?php include("signup_vendeur.html"); ?> 
+        </blockquote>
+
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade" id="ajouterarticle" role="dialog" aria-labelledby="modalTitre" aria-hidden="true">

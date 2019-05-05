@@ -19,7 +19,7 @@
 <?php $index=0; ?>
 <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -27,7 +27,7 @@
     }
     ?>
    
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand" href="main.php"> 
     <img src="ECE_Amazon.png" width="40" height="40" class="d-inline-block align-top" alt="">ECE Amazon</a>
 
@@ -40,7 +40,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="#"> Ventes Flash<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" id="navitem2">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Categories
           </a>
@@ -51,23 +51,64 @@
           <a class="dropdown-item" href="LoisirSport.php"> <i class="fa fa-bicycle"></i> <span> Sports et Loisirs</span></a>
         </div>
         </li>
-        <div><?php echo $_SESSION['pseudo']; ?></div>
+        <div><?php //echo $_SESSION['pseudo']; ?></div>
 
       </ul>
-          <div class="nav pull-right"> 
-        <button class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.html';">Sign in</button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='signup_vendeur.html';">Sign up</button>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect</button>
-        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick=""><span class="fa fa-shopping-basket"></span></button>
+        <div class="nav pull-right"> 
+        <button id="signin" class="  btn btn-outline-success my-2 my-sm-0  " onclick="document.location.href='loginPage.php';"> Sign in </button>
+        <button id="signup" class="  btn btn-outline-primary my-2 my-sm-0  " onclick="document.location.href='Signup_acheteur.html';"> Sign up </button> 
+        <button id="disconect" class="btn btn-outline-primary my-2 my-sm-0" onclick="document.location.href='logout.php';">Disconnect </button>
+        <button class="  btn btn-outline-danger my-2 my-sm-0 " onclick="document.location.href='monPanier.php';"><span class="fa fa-shopping-basket"></span> </button>
         </div>
     </div>
   </nav>
+<!-- Fin navbar -->
+
+<?php 
+    $user_type=isset($_SESSION["user_type"])?$_SESSION["user_type"]:0;   
+  ?>
+
+
+<script src="jquery.js"></script>
+<script>
+
+     $('document').ready(function(){
+      var utilisateur_type =<?php echo $user_type ?>;
+      $("#disconect").hide(); 
+      $("#signup").show();
+
+      if(utilisateur_type==4)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilVendeur.php">Compte Vendeur</a>');
+        $("#signin").hide();
+        $("#signup").hide();
+        $("#disconect").show();  
+      }
+      if(utilisateur_type==2)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilAcheteur.php">Mon Compte </a>');
+        $("#signin").hide(); 
+        $("#signup").hide();
+        $("#disconect").show(); 
+      }
+      if(utilisateur_type==3)
+      {
+        $("#navitem2").after('<a class="nav-link" href="profilAdmin.php">Admin </a>');
+        $("#signin").hide(); 
+        $("#signup").hide();
+        $("#disconect").show(); 
+      }
+
+    });
+
+                         
+</script>
 
 
     <div class="container"> 
         <div class="row">
-            <div class="col-sm-3 col-lg-3">
-                <div class="card" style="width: 16rem;">
+        <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="card" style="width: 223px;">
                     <img src="<?php echo $_SESSION['photo']?>" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $_SESSION['nom']?></h5>
@@ -87,7 +128,41 @@
            
         </div>
 
-        <div class="col-sm-9 col-lg-9">   
+        <div class="col-sm-12 col-md-12 col-lg-9">  
+        <div class="row" id="titrePvendeur" >Les Vendeurs: </div> 
+        
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Photo</th>
+      <th scope="col">nom</th>
+      <th scope="col">email</th>
+    </tr>
+</thead>
+    <tbody>
+  				<?php
+  					$reponse = $bdp->query("SELECT * FROM vendeur WHERE admin = 0 ");
+					while ($donnees = $reponse->fetch()){
+  				?>
+    			<tr>
+	      			<td data-toggle="modal" data-target="#myModal">
+                    <img style="width: 200px; height: 200px;"src="<?php echo $donnees['photo'];?>" ></td>
+      				<td data-toggle="modal" data-target="#myModal"><?php echo $donnees['nom'];?></td>
+                    <td data-toggle="modal" data-target="#myModal"><?php echo $donnees['email'];?></td>
+                    <td data-toggle="modal" data-target="#myModal">  <small class="text-muted">  <a href="suppVendeur.php?id=<?php echo $donnees['id']; ?>" class="btn btn-danger">Supprimer vendeur </a></small></td>
+
+                      
+      				
+    			</tr>
+    			<?php
+    				}
+					$reponse->closeCursor();
+    			?>
+    </tbody>
+
+  
+</table>
+
             <div class="row" id="titrePvendeur" >Mes articles en vente: </div>
             <div class="row">
         <?php
@@ -98,7 +173,7 @@
     {
         ?>
         
-        <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+        <div class="card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -124,7 +199,7 @@
     {
         ?>
         
-        <div class="card border-dark mb-3 col-xs-1 col-sm-1 col-md-4">
+        <div class="card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -150,7 +225,7 @@
     {
         ?>
         
-        <div class="card border-dark mb-3 col-xs-1 col-sm-1 col-md-4">
+        <div class="card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -178,7 +253,7 @@
     {
         ?>
         
-        <div class="card border-dark mb-3 col-xs-1 col-sm-1 col-md-4">
+        <div class="card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -198,42 +273,6 @@
     $i++;
     }
     ?>
-
-
-
-
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Photo</th>
-      <th scope="col">nom</th>
-      <th scope="col">eamil</th>
-    </tr>
-</thead>
-    <tbody>
-  				<?php
-  					$reponse = $bdp->query("SELECT * FROM vendeur WHERE admin = 0 ");
-					while ($donnees = $reponse->fetch()){
-  				?>
-    			<tr>
-	      			<td data-toggle="modal" data-target="#myModal">
-                    <img style="width: 200px; height: 200px;"src="<?php echo $donnees['photo'];?>" ></td>
-      				<td data-toggle="modal" data-target="#myModal"><?php echo $donnees['nom'];?></td>
-                    <td data-toggle="modal" data-target="#myModal"><?php echo $donnees['email'];?></td>
-                    <td data-toggle="modal" data-target="#myModal">  <small class="text-muted">  <a href="suppVendeur.php?id=<?php echo $donnees['id']; ?>" id="aj<?php echo $i?>" class="btn btn-danger">Supprimer vendeur </a></small></td>
-
-                      
-      				
-    			</tr>
-    			<?php
-    				}
-					$reponse->closeCursor();
-    			?>
-    </tbody>
-
-  
-</table>
-
 
 
 </div>

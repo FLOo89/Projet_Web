@@ -20,7 +20,7 @@
 <?php $index=0; ?>
 <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -121,7 +121,7 @@
     {
         ?>
 
-        <div class="card border-dark mb-3 col-xs-1 col-sm-1 col-md-4">
+<div class="card border-dark mb-3 col-xs-12 col-sm-12 col-md-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>

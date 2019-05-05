@@ -17,7 +17,7 @@
 <?php $index=0; ?>
 <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -113,7 +113,7 @@ session_start();
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "ece_amazon";
 
 $_SESSION['histolivre']=array();
@@ -168,7 +168,7 @@ $nbArticles=count($_SESSION['histolivre']);
         while($donnees = $response->fetch())
         {
         ?>
-        <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+        <div class="card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
             <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -195,7 +195,7 @@ $nbArticles=count($_SESSION['histomusique']);
         while($donnees = $response->fetch())
         {
         ?>
-        <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+        <div class="card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
             <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -221,7 +221,7 @@ $nbArticles=count($_SESSION['histomusique']);
         while($donnees = $response->fetch())
         {
         ?>
-        <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+        <div class="card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
             <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -248,7 +248,7 @@ $nbArticles=count($_SESSION['histomusique']);
         while($donnees = $response->fetch())
         {
         ?>
-        <div class="card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+        <div class="card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
             <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>

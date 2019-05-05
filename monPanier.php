@@ -22,7 +22,7 @@
   <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "ece_amazon";
 $_SESSION['panierlivre']=array();
 $_SESSION['paniermusique']=array();
@@ -98,7 +98,7 @@ echo count($_SESSION['panierlivre']);
 
   <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -177,8 +177,8 @@ echo count($_SESSION['panierlivre']);
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-3 col-lg-3">
-        <div class="card" style="width: 16rem;">
+    <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="card" style="width:223px;">
           <div class="card-body">
             <h5 class="card-title"><?php echo 'Votre pannier:'?></h5>
             <h4 class="card-title"><?php echo isset($_SESSION['nom'])?$_SESSION['nom']:" " ?></h4>
@@ -207,7 +207,7 @@ echo count($_SESSION['panierlivre']);
 </script>
         </div>
 
-      <div class="col-sm-9 col-lg-9">
+        <div class="col-sm-12 col-md-12 col-lg-9">
         <div class="row" id="titrePvendeur">Contenu de mon panier: </div>
         <div class="row">
 
@@ -223,7 +223,7 @@ echo count($_SESSION['panierlivre']);
             { $_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
            
-          <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+          <div class=" arpanier card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -250,7 +250,7 @@ echo count($_SESSION['panierlivre']);
             while($donnees = $response->fetch())
             {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
-          <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+          <div class=" arpanier card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -277,7 +277,7 @@ echo count($_SESSION['panierlivre']);
             while($donnees = $response->fetch())
             {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
-          <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+          <div class=" arpanier card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
@@ -304,7 +304,7 @@ echo count($_SESSION['panierlivre']);
             while($donnees = $response->fetch())
             {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
-          <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
+          <div class=" arpanier card border-dark card border-dark mb-3 col-sm-12 col-md-4 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $donnees['nom']; ?> </h5>
