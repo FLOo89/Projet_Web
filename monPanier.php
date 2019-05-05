@@ -1,7 +1,6 @@
 <?php
 	// tous d'abord il faut démarrer le système de sessions
     session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -23,25 +22,19 @@
   <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "ece_amazon";
-
 $_SESSION['panierlivre']=array();
 $_SESSION['paniermusique']=array();
 $_SESSION['paniervetement']=array();
 $_SESSION['paniersport']=array();
-
-
-//$_SESSION['paniertotal'];
-
-
+$_SESSION['paniertotal']=0;
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-
 $sql = "SELECT * FROM panier WHERE type='Livres' ";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -51,7 +44,6 @@ if ($result->num_rows > 0) {
         array_push( $_SESSION['panierlivre'],$idpush);
     }
 }
-
 $sql = "SELECT * FROM panier WHERE type='Vetements'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -61,7 +53,6 @@ if ($result->num_rows > 0) {
         array_push( $_SESSION['paniervetement'],$idpush);
     }
 }
-
 $sql = "SELECT * FROM panier WHERE type='LoisirSport'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -71,7 +62,6 @@ if ($result->num_rows > 0) {
         array_push( $_SESSION['paniersport'],$idpush);
     }
 }
-
 $sql = "SELECT * FROM panier WHERE type='Musique'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -81,10 +71,7 @@ if ($result->num_rows > 0) {
         array_push( $_SESSION['paniermusique'],$idpush);
     }
 }
-
-
 $conn->close();
-
 function ispannierempty()
 {
   if(isset($_SESSION['panierlivre'])&&isset($_SESSION['paniermusique'])&&isset($_SESSION['paniervetement'])&&isset($_SESSION['paniersport']))
@@ -103,7 +90,6 @@ function ispannierempty()
   {
     $empty=1;
   }
-
   return $empty;
 }
 echo count($_SESSION['panierlivre']);
@@ -112,7 +98,7 @@ echo count($_SESSION['panierlivre']);
 
   <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -163,11 +149,9 @@ echo count($_SESSION['panierlivre']);
 
 <script src="jquery.js"></script>
 <script>
-
      $('document').ready(function(){
       var utilisateur_type =<?php echo $user_type ?>;
       $("#disconect").hide(); 
-
       if(utilisateur_type==4)
       {
         $("#navitem2").after('<a class="nav-link" href="profilVendeur.php">Compte Vendeur</a>');
@@ -186,9 +170,7 @@ echo count($_SESSION['panierlivre']);
         $("#signin").hide(); 
         $("#disconect").show(); 
       }
-
     });
-
                          
 </script>
 
@@ -203,7 +185,7 @@ echo count($_SESSION['panierlivre']);
             <p class="card-text"></p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Montant du panier: <?php echo "100$"?> </li>
+            <li id="montantpanier"class="list-group-item">Montant du panier: <?php echo $_SESSION["paniertotal"]?>€ </li>
             <li class="list-group-item">Nb article: <?php echo "12"?> </li>
           </ul>
         </div>
@@ -221,10 +203,6 @@ echo count($_SESSION['panierlivre']);
         $("#passercommande").prop('disabled','true');
           $("#titrePvendeur").after("<p style='color:red; font-size:1.5em;'> Votre panier est vide <span class='fa fa-frown-o'></span></P>")
       }
-
-
-
-
      });
 </script>
         </div>
@@ -242,8 +220,9 @@ echo count($_SESSION['panierlivre']);
             $recherche = $_SESSION['panierlivre'][$a];
             $response = $bdp->query("SELECT * FROM livre WHERE id = '$recherche'");
             while($donnees = $response->fetch())
-            {
+            { $_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
+           
           <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
             <div class="card-body">
@@ -269,7 +248,7 @@ echo count($_SESSION['panierlivre']);
             $recherche = $_SESSION['paniermusique'][$a];
             $response = $bdp->query("SELECT * FROM musique WHERE id = '$recherche'");
             while($donnees = $response->fetch())
-            {
+            {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
           <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
@@ -296,7 +275,7 @@ echo count($_SESSION['panierlivre']);
             $recherche = $_SESSION['paniersport'][$a];
             $response = $bdp->query("SELECT * FROM sportloisir WHERE id = '$recherche'");
             while($donnees = $response->fetch())
-            {
+            {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
           <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
@@ -323,7 +302,7 @@ echo count($_SESSION['panierlivre']);
             $recherche = $_SESSION['paniervetement'][$a];
             $response = $bdp->query("SELECT * FROM vetement WHERE id = '$recherche'");
             while($donnees = $response->fetch())
-            {
+            {$_SESSION["paniertotal"]+=$donnees['prix'];
             ?>
           <div class=" arpanier card border-dark card border-dark mb-3 col-xs-1 col-md-1 col-lg-4">
             <img src="<?php echo $donnees['photo'];?>" class="card-img-top">
@@ -350,5 +329,12 @@ echo count($_SESSION['panierlivre']);
 
     
 </body>
+
+<script src="jquery.js"> </script>
+<script>
+  $('document').ready(function(){
+     $('#montantpanier').text('Montant du panier: <?php echo $_SESSION["paniertotal"]?>€ ');
+  });
+  </script>
 
 </html>

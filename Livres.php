@@ -22,7 +22,7 @@
 <?php $index=0; ?>
 <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {

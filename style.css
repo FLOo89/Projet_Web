@@ -130,6 +130,13 @@ text-transform: uppercase;
     position: relative; 
 } 
 
+.flash {        
+    background-image: url('https://t4.ftcdn.net/jpg/00/97/56/75/240_F_97567517_PqKKC8fKvFvY0Ilf07epsPNG380eVEEk.jpg');        
+    background-size: cover;        
+    background-position: center;        
+    position: relative; 
+}
+
 .arpanier{
    background-color: rgba(231, 232, 240, 0.8); 
 }
