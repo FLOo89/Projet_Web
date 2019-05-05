@@ -1,25 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 05 mai 2019 à 16:34
--- Version du serveur :  5.7.24
--- Version de PHP :  7.2.14
+-- Host: localhost:8889
+-- Generation Time: May 05, 2019 at 08:26 PM
+-- Server version: 5.7.25
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de données :  `ece_amazon`
+-- Database: `ece_amazon`
 --
 CREATE DATABASE IF NOT EXISTS `ece_amazon` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `ece_amazon`;
@@ -27,12 +19,12 @@ USE `ece_amazon`;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `acheteur`
+-- Table structure for table `acheteur`
 --
 
 DROP TABLE IF EXISTS `acheteur`;
-CREATE TABLE IF NOT EXISTS `acheteur` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `acheteur` (
+  `id` int(10) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `adresse` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -46,12 +38,11 @@ CREATE TABLE IF NOT EXISTS `acheteur` (
   `proprietairecarte` varchar(255) NOT NULL,
   `expirationcarte` date NOT NULL,
   `cryptocarte` int(3) NOT NULL,
-  `photo` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `photo` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `acheteur`
+-- Dumping data for table `acheteur`
 --
 
 INSERT INTO `acheteur` (`id`, `nom`, `adresse`, `email`, `mdp`, `ville`, `codepostal`, `pays`, `telephone`, `typecarte`, `numerocarte`, `proprietairecarte`, `expirationcarte`, `cryptocarte`, `photo`) VALUES
@@ -64,26 +55,54 @@ INSERT INTO `acheteur` (`id`, `nom`, `adresse`, `email`, `mdp`, `ville`, `codepo
 -- --------------------------------------------------------
 
 --
--- Structure de la table `historique`
+-- Table structure for table `historique`
 --
 
 DROP TABLE IF EXISTS `historique`;
-CREATE TABLE IF NOT EXISTS `historique` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `historique` (
+  `Id` int(11) NOT NULL,
   `modele` varchar(255) NOT NULL,
-  `compteur` int(11) NOT NULL,
-  PRIMARY KEY (`Id`)
+  `qtn` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `historique`
+--
+
+INSERT INTO `historique` (`Id`, `modele`, `qtn`, `type`) VALUES
+(1, '0L00', 111, 'livre'),
+(5, 'S000', 23, 'musique'),
+(6, '00B1', 99, 'sport'),
+(7, '000C', 23, 'vetement'),
+(8, '0100', 45, 'livre'),
+(9, '0T00', 20, 'livre'),
+(10, 'L000', 78, 'musique'),
+(11, 'B000', 100, 'musique'),
+(14, '00G0', 67, 'sport'),
+(15, '00K0', 15, 'sport'),
+(16, '000T', 92, 'vetement'),
+(17, '000J', 88, 'vetement'),
+(18, '0E00', 35, 'livre'),
+(19, '0E03', 72, 'livre'),
+(20, 'A000', 36, 'musique'),
+(21, 'A001', 28, 'musique'),
+(22, 'L001', 83, 'musique'),
+(23, '00P0', 83, 'sport'),
+(24, '00B2', 26, 'sport'),
+(25, '00B8', 29, 'sport'),
+(26, '001C', 78, 'vetement'),
+(27, '002C', 55, 'vetement');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `livre`
+-- Table structure for table `livre`
 --
 
 DROP TABLE IF EXISTS `livre`;
-CREATE TABLE IF NOT EXISTS `livre` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `livre` (
+  `id` int(10) NOT NULL,
   `idvendeur` int(10) NOT NULL,
   `photo` text NOT NULL,
   `prix` float NOT NULL,
@@ -91,44 +110,40 @@ CREATE TABLE IF NOT EXISTS `livre` (
   `date` date NOT NULL,
   `auteur` varchar(255) NOT NULL,
   `style` varchar(255) NOT NULL,
-  `modele` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idvendeur` (`idvendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=utf8;
+  `modele` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `livre`
+-- Dumping data for table `livre`
 --
 
 INSERT INTO `livre` (`id`, `idvendeur`, `photo`, `prix`, `nom`, `date`, `auteur`, `style`, `modele`) VALUES
 (1, 6, 'https://static.fnac-static.com/multimedia/FR/Images_Produits/FR/fnac.com/Visual_Principal_340/4/1/8/9782013232814/tsp20120918181211/Les-Miserables.jpg', 9, 'Les misérables', '2019-03-11', 'Victor Hugo', 'Roman', '0L00'),
 (2, 2, 'https://static.fnac-static.com/multimedia/Images/FR/NR/bd/2b/1c/1846205/1540-1/tsp20180529165609/L-Heritage-poche.jpg', 10.99, 'Eragon', '2019-05-01', 'Christopher Paolini', 'Fantaisie ', '0E00'),
 (3, 2, 'http://t0.gstatic.com/images?q=tbn:ANd9GcTTsQusoqVJByoqfH6N9QMvw-P1ItywuK3dfiFf4NuHJ8jC5lXN', 4.99, '1984', '2019-04-29', 'George Orwell', 'Fiction', '0100'),
-(1005, 2, 'https://static.fnac-static.com/multimedia/Images/FR/NR/bd/2b/1c/1846205/1540-1/tsp20180529165609/L-Heritage-poche.jpg', 10.99, 'Eragon', '2019-05-01', 'Christopher Paolini', 'Fantaisie ', '0E00'),
+(1005, 2, 'https://static.fnac-static.com/multimedia/Images/FR/NR/bd/2b/1c/1846205/1540-1/tsp20180529165609/L-Heritage-poche.jpg', 10.99, 'Eragon', '2019-05-01', 'Christopher Paolini', 'Fantaisie ', '0E03'),
 (1006, 4, 'https://images-na.ssl-images-amazon.com/images/I/81TveXgGnXL.jpg', 2.99, 'Tintin en Amérique', '2019-05-02', 'Hergé', 'Bande-dessiné', '0T00');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `musique`
+-- Table structure for table `musique`
 --
 
 DROP TABLE IF EXISTS `musique`;
-CREATE TABLE IF NOT EXISTS `musique` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `musique` (
+  `id` int(10) NOT NULL,
   `idvendeur` int(10) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prix` float NOT NULL,
   `date` date NOT NULL,
   `artiste` varchar(255) NOT NULL,
   `photo` text NOT NULL,
-  `modele` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idvendeur` (`idvendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `modele` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `musique`
+-- Dumping data for table `musique`
 --
 
 INSERT INTO `musique` (`id`, `idvendeur`, `nom`, `prix`, `date`, `artiste`, `photo`, `modele`) VALUES
@@ -137,32 +152,37 @@ INSERT INTO `musique` (`id`, `idvendeur`, `nom`, `prix`, `date`, `artiste`, `pho
 (3, 2, 'La bohème ', 4, '2019-02-13', 'Charles Aznavour ', 'http://www.chartsinfrance.net/style/breves/6/photo_1538488432.jpg', 'L000'),
 (7, 2, 'Ac Milan', 2, '2019-04-01', 'Booba', 'https://images.genius.com/8105ce9b527f125adf707faecd0797be.1000x1000x1.jpg', 'A000'),
 (8, 6, 'Au DD', 4.99, '2019-04-17', 'PNL', 'https://m.media-amazon.com/images/I/61iuG4fhYRL._SS500_.jpg', 'A001'),
-(9, 4, 'La loi de murphy', 2.59, '2019-04-12', 'Angele', 'https://i.ytimg.com/vi/zGyThu7EAHQ/maxresdefault.jpg', 'L001'),
-(10, 2, 'San', 2, '2019-03-14', 'Orelsan', 'https://i.ytimg.com/vi/PejyoeG_TmA/maxresdefault.jpg', 'S000');
+(9, 4, 'La loi de murphy', 2.59, '2019-04-12', 'Angele', 'https://i.ytimg.com/vi/zGyThu7EAHQ/maxresdefault.jpg', 'L001');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `panier`
+-- Table structure for table `panier`
 --
 
 DROP TABLE IF EXISTS `panier`;
-CREATE TABLE IF NOT EXISTS `panier` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `panier` (
+  `id` int(11) NOT NULL,
   `idarticle` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `type` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `panier`
+--
+
+INSERT INTO `panier` (`id`, `idarticle`, `type`) VALUES
+(9, 2, 'Vetements');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sportloisir`
+-- Table structure for table `sportloisir`
 --
 
 DROP TABLE IF EXISTS `sportloisir`;
-CREATE TABLE IF NOT EXISTS `sportloisir` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sportloisir` (
+  `id` int(10) NOT NULL,
   `idvendeur` int(10) NOT NULL,
   `date` date DEFAULT NULL,
   `marque` varchar(255) NOT NULL,
@@ -171,13 +191,11 @@ CREATE TABLE IF NOT EXISTS `sportloisir` (
   `prix` float NOT NULL,
   `photo` text NOT NULL,
   `modele` varchar(255) NOT NULL,
-  `descprition` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idvendeur` (`idvendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `descprition` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `sportloisir`
+-- Dumping data for table `sportloisir`
 --
 
 INSERT INTO `sportloisir` (`id`, `idvendeur`, `date`, `marque`, `nom`, `taille`, `prix`, `photo`, `modele`, `descprition`) VALUES
@@ -186,29 +204,28 @@ INSERT INTO `sportloisir` (`id`, `idvendeur`, `date`, `marque`, `nom`, `taille`,
 (3, 2, '2018-11-13', 'Addidas', 'Gants de boxe', '10 OZ', 49.95, 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQT13Wv0CeooLXxK07IO7MuF-HXftnaZD5D3hGb9N8uSmxVH80rl6AiqIEs4LxSSTNM-K9syx-kTA&usqp=CAc', '00G0', ''),
 (4, 4, '2019-03-05', 'Itwit', 'Kayak gonflable', 'Longueur : 382 cm\r\nLargeur : 108 cm', 300, 'https://www.decathlon.fr/media/838/8387563/big_1146854.jpg', '00K0', ''),
 (5, 2, '2018-12-28', 'Go sport', 'Panier de basket', '2m à 3m', 149.9, 'https://medias.go-sport.com/media/resized/1300x/catalog/product/01/39/63/17/bskt-hoop_1_v1.jpg', '00P0', ''),
-(6, 2, '2019-04-07', 'Kipsta', 'But de foot', '120X80 cm', 17, 'https://www.decathlon.fr/media/852/8526869/big_1596030.jpg', '00B1', ''),
-(7, 2, '2019-04-02', 'Intersport', 'Ballon', '20 cm de diamètre', 9, 'https://media.intersport.fr/is/image/intersportfr/5003248E1Q_FA?$produit_l$', '00B0', '');
+(6, 2, '2019-04-07', 'Kipsta', 'But de foot', '120X80 cm', 17, 'https://www.decathlon.fr/media/852/8526869/big_1596030.jpg', '00B2', ''),
+(7, 2, '2019-04-02', 'Intersport', 'Ballon', '20 cm de diamètre', 9, 'https://media.intersport.fr/is/image/intersportfr/5003248E1Q_FA?$produit_l$', '00B8', '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `vendeur`
+-- Table structure for table `vendeur`
 --
 
 DROP TABLE IF EXISTS `vendeur`;
-CREATE TABLE IF NOT EXISTS `vendeur` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `vendeur` (
+  `id` int(10) NOT NULL,
   `pseudo` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `photo` varchar(500) NOT NULL,
   `imagefond` varchar(500) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `admin` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `vendeur`
+-- Dumping data for table `vendeur`
 --
 
 INSERT INTO `vendeur` (`id`, `pseudo`, `email`, `nom`, `photo`, `imagefond`, `admin`) VALUES
@@ -221,12 +238,12 @@ INSERT INTO `vendeur` (`id`, `pseudo`, `email`, `nom`, `photo`, `imagefond`, `ad
 -- --------------------------------------------------------
 
 --
--- Structure de la table `vetement`
+-- Table structure for table `vetement`
 --
 
 DROP TABLE IF EXISTS `vetement`;
-CREATE TABLE IF NOT EXISTS `vetement` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `vetement` (
+  `id` int(10) NOT NULL,
   `idvendeur` int(10) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prix` float NOT NULL,
@@ -235,13 +252,11 @@ CREATE TABLE IF NOT EXISTS `vetement` (
   `sexe` tinyint(1) NOT NULL,
   `photo` text NOT NULL,
   `modele` varchar(255) NOT NULL,
-  `descprition` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idvendeur` (`idvendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `descprition` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `vetement`
+-- Dumping data for table `vetement`
 --
 
 INSERT INTO `vetement` (`id`, `idvendeur`, `nom`, `prix`, `marque`, `taille`, `sexe`, `photo`, `modele`, `descprition`) VALUES
@@ -252,34 +267,137 @@ INSERT INTO `vetement` (`id`, `idvendeur`, `nom`, `prix`, `marque`, `taille`, `s
 (5, 2, 'Chaussure superstar', 79.95, 'Addidas', '38', 1, 'https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/4ed6658e09594a52acd9a976013f44fc_9366/Chaussure_Superstar_blanc_DB3346_01_standard.jpg', '002C', '');
 
 --
--- Contraintes pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Contraintes pour la table `livre`
+-- Indexes for table `acheteur`
+--
+ALTER TABLE `acheteur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `historique`
+--
+ALTER TABLE `historique`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `livre`
+--
+ALTER TABLE `livre`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idvendeur` (`idvendeur`);
+
+--
+-- Indexes for table `musique`
+--
+ALTER TABLE `musique`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idvendeur` (`idvendeur`);
+
+--
+-- Indexes for table `panier`
+--
+ALTER TABLE `panier`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sportloisir`
+--
+ALTER TABLE `sportloisir`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idvendeur` (`idvendeur`);
+
+--
+-- Indexes for table `vendeur`
+--
+ALTER TABLE `vendeur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vetement`
+--
+ALTER TABLE `vetement`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idvendeur` (`idvendeur`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `acheteur`
+--
+ALTER TABLE `acheteur`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `historique`
+--
+ALTER TABLE `historique`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `livre`
+--
+ALTER TABLE `livre`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
+
+--
+-- AUTO_INCREMENT for table `musique`
+--
+ALTER TABLE `musique`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `panier`
+--
+ALTER TABLE `panier`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `sportloisir`
+--
+ALTER TABLE `sportloisir`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `vendeur`
+--
+ALTER TABLE `vendeur`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `vetement`
+--
+ALTER TABLE `vetement`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `livre`
 --
 ALTER TABLE `livre`
   ADD CONSTRAINT `livre_ibfk_1` FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`id`);
 
 --
--- Contraintes pour la table `musique`
+-- Constraints for table `musique`
 --
 ALTER TABLE `musique`
   ADD CONSTRAINT `musique_ibfk_1` FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`id`);
 
 --
--- Contraintes pour la table `sportloisir`
+-- Constraints for table `sportloisir`
 --
 ALTER TABLE `sportloisir`
   ADD CONSTRAINT `sportloisir_ibfk_1` FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`id`);
 
 --
--- Contraintes pour la table `vetement`
+-- Constraints for table `vetement`
 --
 ALTER TABLE `vetement`
   ADD CONSTRAINT `vetement_ibfk_1` FOREIGN KEY (`idvendeur`) REFERENCES `vendeur` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

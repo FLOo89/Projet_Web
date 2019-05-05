@@ -22,7 +22,7 @@
   <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "ece_amazon";
 $_SESSION['panierlivre']=array();
 $_SESSION['paniermusique']=array();
@@ -98,7 +98,7 @@ echo count($_SESSION['panierlivre']);
 
   <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -117,7 +117,7 @@ echo count($_SESSION['panierlivre']);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#"> Ventes Flash<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="ventesFlash.php"> Ventes Flash<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown" id="navitem2">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,7 +186,7 @@ echo count($_SESSION['panierlivre']);
           </div>
           <ul class="list-group list-group-flush">
             <li id="montantpanier"class="list-group-item">Montant du panier: <?php echo $_SESSION["paniertotal"]?>€ </li>
-            <li class="list-group-item">Nb article: <?php echo "12"?> </li>
+            <li class="list-group-item">Nb article: <?php echo count($_SESSION['panierlivre']+$_SESSION['paniermusique']+$_SESSION['paniervetement']+$_SESSION['paniersport']);?> </li>
           </ul>
         </div>
         

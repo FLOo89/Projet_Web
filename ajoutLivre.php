@@ -2,7 +2,7 @@
 	session_start();
 
 	$erreur=" "; 
-		$con = mysqli_connect('localhost','root','','ece_amazon');
+		$con = mysqli_connect('localhost','root','root','ece_amazon');
 
 		if(!$con){
 			echo "Pas connecté au serveur";

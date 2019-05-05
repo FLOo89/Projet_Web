@@ -5,7 +5,7 @@
 
 	$servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $dbname = "ece_amazon";
     
     // Create connection

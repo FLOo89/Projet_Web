@@ -135,6 +135,8 @@ text-transform: uppercase;
     background-size: cover;        
     background-position: center;        
     position: relative; 
+    margin: auto;
+
 }
 
 .arpanier{

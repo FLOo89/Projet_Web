@@ -17,7 +17,7 @@
 <?php $index=0; ?>
 <?php 
     try{
-        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdp = new PDO('mysql:host=localhost;dbname=ece_amazon;charset=utf8','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch(Exception $e)
     {
@@ -36,7 +36,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#"> Ventes Flash<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="ventesFlash.php"> Ventes Flash<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown" id="navitem2">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -108,12 +108,13 @@
     
  <section class="row">
 
+
  <?php
 session_start();
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "ece_amazon";
 
 $_SESSION['histolivre']=array();
@@ -130,7 +131,9 @@ if ($conn->connect_error) {
 
 
 ////////
-$sql = "SELECT * FROM historique ORDER BY `historique`.`qtn` DESC";
+$sqll = "SELECT * FROM `historique` ORDER BY `historique`.`qtn` DESC";
+$conn->query($sqll);
+
 
 ////////
 $sql = "SELECT modele, type FROM historique";
@@ -160,7 +163,7 @@ if ($result->num_rows > 0) {
 
 
 $nbArticles=count($_SESSION['histolivre']);
-    for ($a=0 ;$a < $nbArticles ; $a++)
+    for ($a=0 ;$a < 3 ; $a++)
     {
         $i=0;
         $recherche = $_SESSION['histolivre'][$a];
@@ -186,7 +189,7 @@ $nbArticles=count($_SESSION['histolivre']);
         <?php }} 
 
 $nbArticles=count($_SESSION['histomusique']);
-        for ($a=0 ;$a < $nbArticles ; $a++)
+        for ($a=0 ;$a < 3 ; $a++)
     {
         $i=0;
         $compteuraffichage=0;
@@ -213,7 +216,7 @@ $nbArticles=count($_SESSION['histomusique']);
         <?php }}  
 
         $nbArticles=count($_SESSION['histovetement']);      
-        for ($a=0 ;$a < $nbArticles ; $a++)
+        for ($a=0 ;$a < 3 ; $a++)
     {
         $i=0;
         $recherche = $_SESSION['histovetement'][$a];
@@ -240,7 +243,7 @@ $nbArticles=count($_SESSION['histomusique']);
 
         <?php
         $nbArticles=count($_SESSION['histosport']);        
-        for ($a=0 ;$a < $nbArticles ; $a++)
+        for ($a=0 ;$a < 3 ; $a++)
         {
         $i=0;
         $recherche = $_SESSION['histosport'][$a];
